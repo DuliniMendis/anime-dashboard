@@ -3,16 +3,15 @@ import {
   Heading,
   Text,
   Stack,
-  Button,
   Link,
+  Button,
 } from "@chakra-ui/react";
-import { Header } from "./ui/Header";
 import NextLink from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <Header />
       <Container maxW="1200px" padding="5rem 0">
         <Stack spacing="20" alignItems="center">
           <Stack spacing="10" textAlign="center" maxW="800px" padding="0 2rem">
@@ -33,9 +32,18 @@ export default function Home() {
             href="/information"
             variant="button"
           >
-            Enter the realm
+            <Button colorScheme="purple" size="lg">
+              Enter the realm
+            </Button>
           </Link>
         </Stack>
+        <Image
+          src="/coverimg.png"
+          alt="cover image"
+          width="500"
+          height="500"
+          style={{ position: "fixed", bottom: "0px", marginBottom: "-20px" }}
+        />
       </Container>
     </>
   );

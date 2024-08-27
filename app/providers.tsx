@@ -2,11 +2,11 @@
 
 import {
   ChakraProvider,
-  Modal,
   createMultiStyleConfigHelpers,
 } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { cardAnatomy, menuAnatomy, modalAnatomy } from "@chakra-ui/anatomy";
+import { UserContextProvider } from "./context/userContext";
 
 const cardStyle = createMultiStyleConfigHelpers(cardAnatomy.keys);
 const cardBaseStyle = cardStyle.definePartsStyle({
@@ -87,5 +87,9 @@ const theme = extendTheme({
 });
 
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <ChakraProvider theme={theme}>{children}</ChakraProvider>;
+  return (
+    <UserContextProvider>
+      <ChakraProvider theme={theme}>{children}</ChakraProvider>
+    </UserContextProvider>
+  );
 }
