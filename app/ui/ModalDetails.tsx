@@ -1,0 +1,38 @@
+"use client";
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  Button,
+} from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
+
+export const ModalDetails = ({ children }: { children: React.ReactNode }) => {
+  console.log("ModalDetails");
+  const router = useRouter();
+
+  const onClose = () => {
+    router.back();
+  };
+
+  return (
+    <Modal isOpen onClose={onClose} size="xl">
+      <ModalOverlay />
+      <ModalContent>
+        <ModalCloseButton />
+        <ModalBody>{children}</ModalBody>
+
+        <ModalFooter>
+          <Button colorScheme="purple" mr={3} onClick={onClose}>
+            Close
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+};

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import AnimeDetails from "../ui/AnimeDetails";
+import AnimeDetails from "../../ui/AnimeDetails";
 
 export default function DetailsPage({ params }: { params: { id: string } }) {
   return (

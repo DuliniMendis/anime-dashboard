@@ -1,6 +1,17 @@
 "use client";
 
 import { useFormState } from "react-dom";
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Flex,
+  Card,
+  Heading,
+  Button,
+  Text,
+  Stack,
+} from "@chakra-ui/react";
 import { authenticate } from "@/app/lib/actions";
 
 export const LoginForm = () => {
@@ -10,42 +21,46 @@ export const LoginForm = () => {
   );
 
   return (
-    <form action={formAction} className="space-y-3">
-      <div>
-        <h1>Please log in to continue.</h1>
-        <div>
-          <div>
-            <label htmlFor="username">Username</label>
-            <div className="relative">
-              <input
-                id="username"
+    <Flex height="100vh" align="center" justify="center">
+      <Card px="5rem" py="3rem">
+        <form action={formAction}>
+          <Stack spacing={10}>
+            <Heading as="h1" size="xl" textAlign="center">
+              Welcome to AniRealm
+            </Heading>
+            <Text fontSize="lg" textAlign="center" maxW="500px">
+              Before you embark on your epic anime adventure, we need a little
+              info to get started.
+            </Text>
+            <FormControl isRequired>
+              <FormLabel>What should we call you?</FormLabel>
+              <Input
                 name="username"
+                variant="filled"
                 placeholder="Enter username"
-                required
               />
-            </div>
-          </div>
-          <div>
-            <label htmlFor="jobTitle">Job title</label>
-            <div className="relative">
-              <input
-                id="jobTitle"
+            </FormControl>
+            <FormControl isRequired>
+              <FormLabel>What is your job title?</FormLabel>
+              <Input
                 name="jobTitle"
+                variant="filled"
                 placeholder="Enter job title"
-                required
               />
+            </FormControl>
+            <Button
+              aria-disabled={isPending}
+              colorScheme="purple"
+              type="submit"
+            >
+              Log in
+            </Button>
+            <div aria-live="polite" aria-atomic="true">
+              {errorMessage && <Text>{errorMessage}</Text>}
             </div>
-          </div>
-        </div>
-        <button aria-disabled={isPending}>Log in</button>
-        <div aria-live="polite" aria-atomic="true">
-          {errorMessage && (
-            <>
-              <p>{errorMessage}</p>
-            </>
-          )}
-        </div>
-      </div>
-    </form>
+          </Stack>
+        </form>
+      </Card>
+    </Flex>
   );
 };

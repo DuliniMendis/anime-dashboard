@@ -9,25 +9,24 @@ import {
   Avatar,
   MenuList,
   MenuItem,
-  MenuDivider,
   Box,
+  HStack,
 } from "@chakra-ui/react";
+import Image from "next/image";
+import { logOut } from "../lib/actions";
 
 export const Header = () => {
-  const handleLogout = () => {
-    // Handle logout logic here (e.g., clear auth tokens, redirect to login, etc.)
-    alert("Logged out successfully!");
-  };
-
   const handleEditDetails = () => {};
 
   return (
     <Box px={4} py={3} as="header">
       <Flex justify="space-between" align="center" maxW="1200px" mx="auto">
-        {/* Site Title */}
-        <Heading as="h1" size="lg" color="white">
-          My Anime Site
-        </Heading>
+        <HStack spacing={10}>
+          <Image src="/anilogo.png" alt="AniRealm" width="50" height="50" />
+          <Heading as="h1" size="lg" color="white">
+            AniRealm
+          </Heading>
+        </HStack>
 
         {/* Avatar with Dropdown */}
         <Menu>
@@ -40,12 +39,11 @@ export const Header = () => {
             color="white"
             _hover={{ textDecoration: "none" }}
           >
-            <Avatar size="md" src="https://bit.ly/broken-link" />
+            <Avatar size="md" />
           </MenuButton>
           <MenuList>
-            <MenuItem onClick={handleEditDetails}>Edit Details</MenuItem>
-            <MenuDivider />
-            <MenuItem onClick={handleLogout}>Log Out</MenuItem>
+            <MenuItem onClick={handleEditDetails}>Edit details</MenuItem>
+            <MenuItem onClick={logOut}>Log out</MenuItem>
           </MenuList>
         </Menu>
       </Flex>

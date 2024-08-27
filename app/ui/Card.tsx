@@ -8,9 +8,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { MediaInfoFragment } from "../graphql/pages.generated";
+import { BasicMediaInfoFragment } from "../graphql/pages.generated";
 
-export const AnimeCard = ({ media }: { media: MediaInfoFragment }) => {
+export const AnimeCard = ({ media }: { media: BasicMediaInfoFragment }) => {
   return (
     <Card width={350} height={180} key={media?.id}>
       <CardBody>
@@ -26,6 +26,7 @@ export const AnimeCard = ({ media }: { media: MediaInfoFragment }) => {
               alt={media?.title?.english || ""}
               sizes={"100px"}
               fill
+              style={{ borderRadius: "0.5rem", border: "2px solid white" }}
             />
           </Box>
           <Stack spacing="3">

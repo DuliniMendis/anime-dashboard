@@ -13,13 +13,11 @@ async function getUser(
   try {
     const users =
       await sql<User>`SELECT username, job_title as jobTitle FROM anime_users WHERE username=${username}`;
-    console.log({ users });
 
     if (!users.rows.length) {
       await sql<User>`INSERT INTO anime_users (username, job_title) VALUES (${username}, ${jobTitle})`;
       const createdUser =
         await sql<User>`SELECT username, job_title as jobTitle FROM anime_users WHERE username=${username}`;
-      console.log({ createdUser });
       return createdUser.rows[0];
     }
 

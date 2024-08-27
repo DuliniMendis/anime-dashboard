@@ -1,11 +1,9 @@
-import { LoginForm } from "../ui/loginForm";
+import { LoginForm } from "../ui/LoginForm";
 
 export default function LoginPage() {
   return (
     <main>
-      <div>
-        <LoginForm />
-      </div>
+      <LoginForm />
     </main>
   );
 }

@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 const MediaFragment = gql`
-  fragment MediaInfo on Media {
+  fragment BasicMediaInfo on Media {
     id
     title {
       english
@@ -30,7 +30,7 @@ export const getPage = gql`
         hasNextPage
       }
       media(sort: $sort) {
-        ...MediaInfo
+        ...BasicMediaInfo
       }
     }
   }
@@ -38,9 +38,9 @@ export const getPage = gql`
 `;
 
 export const getMedia = gql`
-  query getMedia {
-    Media(id: 16498) {
-      ...MediaInfo
+  query getMedia($id: Int!) {
+    Media(id: $id) {
+      ...BasicMediaInfo
       bannerImage
       startDate {
         year
@@ -70,4 +70,5 @@ export const getMedia = gql`
       }
     }
   }
+  ${MediaFragment}
 `;
