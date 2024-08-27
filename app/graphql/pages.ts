@@ -1,5 +1,21 @@
 import gql from "graphql-tag";
 
+const MediaFragment = gql`
+  fragment MediaInfo on Media {
+    id
+    title {
+      english
+    }
+    coverImage {
+      medium
+    }
+    type
+    genres
+    averageScore
+    popularity
+  }
+`;
+
 export const getPage = gql`
   query getPage(
     $page: Int = 1
@@ -14,33 +30,18 @@ export const getPage = gql`
         hasNextPage
       }
       media(sort: $sort) {
-        id
-        title {
-          english
-        }
-        coverImage {
-          medium
-        }
-        type
-        genres
-        averageScore
-        popularity
+        ...MediaInfo
       }
     }
   }
+  ${MediaFragment}
 `;
 
 export const getMedia = gql`
   query getMedia {
     Media(id: 16498) {
-      id
-      title {
-        english
-      }
+      ...MediaInfo
       bannerImage
-      coverImage {
-        large
-      }
       startDate {
         year
         month
@@ -54,14 +55,10 @@ export const getMedia = gql`
       season
       seasonYear
       description
-      type
       format
       episodes
       duration
-      genres
       isAdult
-      averageScore
-      popularity
       studios(isMain: true) {
         edges {
           isMain
