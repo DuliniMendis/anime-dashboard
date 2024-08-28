@@ -1,14 +1,13 @@
-import NextAuth from "next-auth";
-import { authConfig } from "../../auth.config";
-import Credentials from "next-auth/providers/credentials";
-import { sql } from "@vercel/postgres";
-import { User, UserDBRecord } from "./types";
+import NextAuth from 'next-auth';
+import { authConfig } from '../../auth.config';
+import Credentials from 'next-auth/providers/credentials';
+import { sql } from '@vercel/postgres';
+import { User, UserDBRecord } from './types';
 
 const getUser = async (
   username: string,
   jobTitle: string
 ): Promise<User | undefined> => {
-  console.log({ username, jobTitle });
   let user: User;
   try {
     const users =
@@ -31,14 +30,11 @@ const getUser = async (
       };
     }
   } catch (error) {
-    console.error("Failed to fetch user:", error);
-    throw new Error("Failed to fetch user.");
+    throw new Error('Failed to fetch user.');
   }
 
-  console.log("user", user);
-
   if (jobTitle !== user.jobTitle) {
-    throw new Error("Job title does not match.");
+    throw new Error('Job title does not match.');
   }
 
   return user;

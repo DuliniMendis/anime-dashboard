@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Suspense, useState } from "react";
-import Pagination from "./Pagination";
-import { List } from "./List";
-import { AnimeListFallback } from "./ListFallback";
+import { Suspense, useState } from 'react';
+import Pagination from './Pagination';
+import { List } from './List';
+import { AnimeListFallback } from './ListFallback';
 
 interface PageInfo {
   totalPages: number;

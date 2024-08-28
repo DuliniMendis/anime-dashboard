@@ -1,16 +1,16 @@
-import { Container, Heading, Stack } from "@chakra-ui/react";
-import { AnimeList } from "../ui/ListWithPagination";
+import { Container, Heading, Stack } from '@chakra-ui/react';
+import { AnimeList } from '../ui/ListWithPagination';
 
 export default function Information() {
   return (
-    <Container maxW="1200px" py={20} px={0}>
-      <Stack spacing="7" alignItems="center">
+    <Container maxW='1200px' py={20} px={0}>
+      <Stack spacing='7' alignItems='center'>
         <Heading
-          as="h2"
-          size="xl"
-          textAlign="center"
-          maxW="800px"
-          padding="0 2rem"
+          as='h2'
+          size='xl'
+          textAlign='center'
+          maxW='800px'
+          padding='0 2rem'
         >
           Take a peek at the most popular anime shows of the season
         </Heading>

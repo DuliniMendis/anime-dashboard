@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import { Button, HStack, Text, Stack } from "@chakra-ui/react";
+import React, { useMemo } from 'react';
+import { Button, HStack, Text, Stack } from '@chakra-ui/react';
 
 const NUM_PAGEES_TO_SHOW = 5;
 
@@ -47,12 +47,12 @@ const Pagination = ({
 
   return (
     <Stack spacing={5} mt={8}>
-      <HStack spacing={{ base: 2, md: 4 }} justify="center">
+      <HStack spacing={{ base: 2, md: 4 }} justify='center'>
         <Button
           onClick={handlePrevPage}
           isDisabled={currentPage === 1}
-          colorScheme="purple"
-          size={{ base: "sm", md: "md" }}
+          colorScheme='purple'
+          size={{ base: 'sm', md: 'md' }}
         >
           Prev
         </Button>
@@ -61,8 +61,8 @@ const Pagination = ({
           <Button
             key={page}
             onClick={() => onPageChange(page)}
-            colorScheme={page === currentPage ? "purple" : "gray"}
-            size={{ base: "sm", md: "md" }}
+            colorScheme={page === currentPage ? 'purple' : 'gray'}
+            size={{ base: 'sm', md: 'md' }}
           >
             {page}
           </Button>
@@ -71,13 +71,13 @@ const Pagination = ({
         <Button
           onClick={handleNextPage}
           isDisabled={currentPage === totalPages}
-          colorScheme="purple"
-          size={{ base: "sm", md: "md" }}
+          colorScheme='purple'
+          size={{ base: 'sm', md: 'md' }}
         >
           Next
         </Button>
       </HStack>
-      <Text align="center">{`You're seeing ${startIndex} to ${endIndex} of ${totalItems} anime/manga`}</Text>
+      <Text align='center'>{`You're seeing ${startIndex} to ${endIndex} of ${totalItems} anime/manga`}</Text>
     </Stack>
   );
 };

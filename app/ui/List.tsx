@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useSuspenseQuery } from "@apollo/client";
-import { SimpleGrid } from "@chakra-ui/react";
-import { getPage } from "../lib/graphql/pages";
-import Link from "next/link";
-import { AnimeCard } from "./Card";
+import { useSuspenseQuery } from '@apollo/client';
+import { SimpleGrid } from '@chakra-ui/react';
+import { getPage } from '../lib/graphql/pages';
+import Link from 'next/link';
+import { AnimeCard } from './Card';
 import {
   BasicMediaInfoFragment,
   GetPageQuery,
-} from "../lib/graphql/pages.generated";
-import { useEffect } from "react";
+} from '../lib/graphql/pages.generated';
+import { useEffect } from 'react';
 
 export const List = ({
   currentPage,
@@ -23,7 +23,7 @@ export const List = ({
 }) => {
   const { data } = useSuspenseQuery<GetPageQuery>(getPage, {
     variables: { page: currentPage },
-    fetchPolicy: "cache-and-network",
+    fetchPolicy: 'cache-and-network',
   });
 
   const items = data?.Page?.media as BasicMediaInfoFragment[];
@@ -34,7 +34,7 @@ export const List = ({
     if (totalPages && itemsPerPage) {
       updatePagination({ totalPages, itemsPerPage });
     }
-  }, [data]);
+  }, [data, updatePagination]);
 
   return (
     <SimpleGrid

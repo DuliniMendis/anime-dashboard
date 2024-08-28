@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
 import {
   ChakraProvider,
   createMultiStyleConfigHelpers,
-} from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
-import { cardAnatomy, menuAnatomy, modalAnatomy } from "@chakra-ui/anatomy";
-import { colors } from "@/app/styles/colors";
-import { fonts } from "@/app/styles/fonts";
+} from '@chakra-ui/react';
+import { extendTheme } from '@chakra-ui/react';
+import { cardAnatomy, menuAnatomy, modalAnatomy } from '@chakra-ui/anatomy';
+import { colors } from '@/app/styles/colors';
+import { fonts } from '@/app/styles/fonts';
 
 const cardStyle = createMultiStyleConfigHelpers(cardAnatomy.keys);
 const cardBaseStyle = cardStyle.definePartsStyle({
@@ -28,7 +28,7 @@ const menuBaseStyle = menuStyle.definePartsStyle({
       bg: colors.midDark,
       color: colors.white,
     },
-    border: "none",
+    border: 'none',
   },
   button: {
     bg: colors.light,
@@ -37,7 +37,7 @@ const menuBaseStyle = menuStyle.definePartsStyle({
       bg: colors.midDark,
       color: colors.white,
     },
-    border: "none",
+    border: 'none',
   },
 });
 
@@ -60,8 +60,8 @@ const modalBaseStyle = modalStyle.definePartsStyle({
 
 const theme = extendTheme({
   fonts: {
-    heading: "var(--font-firasans)",
-    body: "var(--font-roboto)",
+    heading: 'var(--font-firasans)',
+    body: 'var(--font-roboto)',
   },
   styles: {
     global: {
