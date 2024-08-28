@@ -35,7 +35,7 @@ export const Header = () => {
   }
 
   return (
-    <Box px={4} py={3} as='nav'>
+    <Box px={4} py={3} as='header'>
       <Flex justify='space-between' align='center' maxW='1200px' mx='auto'>
         <Link href='/'>
           <HStack spacing={{ base: 3, md: 7 }}>
