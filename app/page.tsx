@@ -5,6 +5,8 @@ import {
   Stack,
   Link,
   Button,
+  Flex,
+  Box,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
 import Image from "next/image";
@@ -37,7 +39,20 @@ export default function Home() {
             </Button>
           </Link>
         </Stack>
-        <Image src="/coverimg.png" alt="cover image" width="300" height="350" />
+        <Flex
+          position={{ base: "static", md: "fixed" }}
+          bottom={{ base: "auto", md: 0 }}
+          right={{ base: "auto", md: 0 }}
+          justifyContent={{ base: "center", md: "flex-end" }}
+          width={{ base: "100%", md: "auto" }}
+        >
+          <Image
+            src="/coverimg.png"
+            alt="cover image"
+            width={500}
+            height={500}
+          />
+        </Flex>
       </Container>
     </>
   );

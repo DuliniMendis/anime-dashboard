@@ -17,6 +17,7 @@ import Image from "next/image";
 import { logOut } from "../lib/actions";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "../lib/context/userContext";
+import Link from "next/link";
 
 export const Header = () => {
   const { user, setUser } = useUserContext();
@@ -35,12 +36,14 @@ export const Header = () => {
   return (
     <Box px={4} py={3} as="header">
       <Flex justify="space-between" align="center" maxW="1200px" mx="auto">
-        <HStack spacing={{ base: 3, md: 7 }}>
-          <Image src="/anilogo.png" alt="AniRealm" width="50" height="50" />
-          <Heading as="h1" size="lg" color="white">
-            AniRealm
-          </Heading>
-        </HStack>
+        <Link href="/">
+          <HStack spacing={{ base: 3, md: 7 }}>
+            <Image src="/anilogo.png" alt="AniRealm" width="50" height="50" />
+            <Heading as="h1" size="lg" color="white">
+              AniRealm
+            </Heading>
+          </HStack>
+        </Link>
         {/* Avatar with Dropdown */}
         {user && (
           <HStack spacing={{ base: 3, md: 7 }}>
