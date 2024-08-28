@@ -18,6 +18,7 @@ import { logOut } from '../lib/actions'
 import { useRouter } from 'next/navigation'
 import { useUserContext } from '../lib/context/userContext'
 import Link from 'next/link'
+import { colors } from '../styles/colors'
 
 export const Header = () => {
   const { user, setUser } = useUserContext()
@@ -53,7 +54,7 @@ export const Header = () => {
             </Stack>
             <Menu>
               <MenuButton rounded='full'>
-                <Avatar size='md' name={user.username} colorScheme='purple' />
+                <Avatar size='md' name={user.username} bgColor={colors.light} />
               </MenuButton>
               <MenuList>
                 <MenuItem onClick={handleEditDetails}>Edit details</MenuItem>

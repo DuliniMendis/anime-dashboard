@@ -60,6 +60,11 @@ const theme = extendTheme({
     heading: 'var(--font-firasans)',
     body: 'var(--font-roboto)',
   },
+  colors: {
+    purple: {
+      500: colors.mid,
+    },
+  },
   styles: {
     global: {
       body: {
