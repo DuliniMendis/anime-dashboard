@@ -21,21 +21,24 @@ export const LoginForm = () => {
   const [jobTitle, setJobTitle] = useState('')
   const [mismatchError, setMismatchError] = useState('')
 
-  const checkIfUsernameExists = async (username: string, jobTitle: string) => {
-    const usernameAndJobTitleMatch = await doesUsernameAndJobTitleMatch(
-      username,
-      jobTitle,
-    )
-    if (usernameAndJobTitleMatch) {
-      setMismatchError('')
-    } else {
-      setMismatchError(
-        'Username and job title does not match what was previously used.',
-      )
-    }
-  }
-
   useEffect(() => {
+    const checkIfUsernameExists = async (
+      username: string,
+      jobTitle: string,
+    ) => {
+      const usernameAndJobTitleMatch = await doesUsernameAndJobTitleMatch(
+        username,
+        jobTitle,
+      )
+      if (usernameAndJobTitleMatch) {
+        setMismatchError('')
+      } else {
+        setMismatchError(
+          'Username and job title does not match what was previously used.',
+        )
+      }
+    }
+
     if (username && jobTitle) {
       checkIfUsernameExists(username, jobTitle)
     }

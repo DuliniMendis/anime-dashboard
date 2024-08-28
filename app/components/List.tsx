@@ -5,36 +5,30 @@ import { SimpleGrid } from '@chakra-ui/react'
 import { getPage } from '../lib/graphql/pages'
 import Link from 'next/link'
 import { AnimeCard } from './Card'
-import {
-  BasicMediaInfoFragment,
-  GetPageQuery,
-} from '../lib/graphql/pages.generated'
+import { GetPageQuery } from '../lib/graphql/pages.generated'
 import { useEffect } from 'react'
+import { mapPageDataToView } from '../lib/dataMappers/listMapper'
+import { ITEMS_PER_PAGE } from '../lib/constants'
 
 export const List = ({
   currentPage,
   updatePagination,
 }: {
   currentPage: number
-  updatePagination: (pageInfo: {
-    totalPages: number
-    itemsPerPage: number
-  }) => void
+  updatePagination: (totalPages: number) => void
 }) => {
   const { data } = useSuspenseQuery<GetPageQuery>(getPage, {
-    variables: { page: currentPage },
+    variables: { page: currentPage, perPage: ITEMS_PER_PAGE },
     fetchPolicy: 'cache-and-network',
   })
 
-  const items = data?.Page?.media as BasicMediaInfoFragment[]
+  const { items, totalPages } = mapPageDataToView(data)
 
   useEffect(() => {
-    const totalPages = data?.Page?.pageInfo?.total
-    const itemsPerPage = data?.Page?.pageInfo?.perPage
-    if (totalPages && itemsPerPage) {
-      updatePagination({ totalPages, itemsPerPage })
+    if (totalPages) {
+      updatePagination(totalPages)
     }
-  }, [data])
+  }, [totalPages])
 
   return (
     <SimpleGrid

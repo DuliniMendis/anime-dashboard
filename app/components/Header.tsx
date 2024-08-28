@@ -35,7 +35,7 @@ export const Header = () => {
   }
 
   return (
-    <Box px={4} py={3} as='header'>
+    <Box px={4} py={3} as='nav'>
       <Flex justify='space-between' align='center' maxW='1200px' mx='auto'>
         <Link href='/'>
           <HStack spacing={{ base: 3, md: 7 }}>
@@ -45,7 +45,7 @@ export const Header = () => {
             </Heading>
           </HStack>
         </Link>
-        {/* Avatar with Dropdown */}
+        {/* Avatar with Dropdown only shown after login */}
         {user && (
           <HStack spacing={{ base: 3, md: 7 }}>
             <Stack spacing={0} textAlign='right'>

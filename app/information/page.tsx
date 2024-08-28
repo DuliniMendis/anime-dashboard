@@ -1,5 +1,5 @@
 import { Container, Heading, Stack } from '@chakra-ui/react'
-import { AnimeList } from '../ui/ListWithPagination'
+import { AnimeList } from '../components/ListWithPagination'
 
 export default function Information() {
   return (

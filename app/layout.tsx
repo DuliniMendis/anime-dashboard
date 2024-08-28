@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Poppins, Quicksand } from 'next/font/google'
 import { ThemeProvider } from './lib/providers/ThemeProvider'
 import { ApolloProvider } from './lib/providers/ApolloProvider'
-import { Header } from './ui/Header'
+import { Header } from './components/Header'
 import { Flex } from '@chakra-ui/react'
 import { UserContextProvider } from '@/app/lib/providers/UserContextProvider'
 

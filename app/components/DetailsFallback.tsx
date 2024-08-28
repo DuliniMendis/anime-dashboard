@@ -7,10 +7,10 @@ import {
   Skeleton,
 } from '@chakra-ui/react'
 
-export default function AnimeDetailsFallback() {
+export default function DetailsFallback() {
   return (
     <>
-      <Flex alignItems='center' justifyContent={'center'} mt='3rem'>
+      <Flex alignItems='center' justifyContent='center' mt='3rem'>
         <Skeleton
           height='100px'
           width='90%'

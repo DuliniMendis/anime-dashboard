@@ -9,6 +9,9 @@ import {
 
 const makeClient = () => {
   const httpLink = new HttpLink({
+    // keeping this url here instead of in a .env file because
+    // - it's a public API
+    // - it's visible in the network tab anyway
     uri: 'https://graphql.anilist.co',
   })
 

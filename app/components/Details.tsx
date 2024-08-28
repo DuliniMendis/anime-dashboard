@@ -18,7 +18,7 @@ export default function AnimeDetails({ id }: { id: string }) {
 
   return (
     <>
-      <Flex alignItems='center' justifyContent={'center'}>
+      <Flex alignItems='center' justifyContent='center'>
         <Image
           src={data.Media.bannerImage || ''}
           alt={data.Media.title?.english || ''}
@@ -31,11 +31,14 @@ export default function AnimeDetails({ id }: { id: string }) {
           <Heading as='h1' size='xl'>
             {data.Media.title?.english}
           </Heading>
-          {data.Media.description?.split('<br>').map((line, index) => (
-            <Text mt='4' fontSize='sm' key={index}>
-              {line}
-            </Text>
-          ))}
+          {data.Media.description
+            ?.replace('<i>', '') // description has html tags so removing the common ones
+            .split('<br>')
+            .map((line, index) => (
+              <Text mt='4' fontSize='sm' key={index}>
+                {line}
+              </Text>
+            ))}
         </Box>
       </Container>
     </>

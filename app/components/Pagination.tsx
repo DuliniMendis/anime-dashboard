@@ -1,25 +1,29 @@
 import React, { useMemo } from 'react'
 import { Button, HStack, Text, Stack } from '@chakra-ui/react'
 
-const NUM_PAGEES_TO_SHOW = 5
-
 const Pagination = ({
   currentPage,
   totalPages,
   itemsPerPage,
+  nPagesToShow,
   onPageChange,
 }: {
   currentPage: number
   totalPages: number
   itemsPerPage: number
+  nPagesToShow: number
   onPageChange: (page: number) => void
 }) => {
+  // Keeping this calculation here instead of in a util file because
+  // - it's small
+  // - it's only used in this component
+  // - it's nice to have related logic in the same place
   const { pageNumbers, startIndex, endIndex, totalItems } = useMemo(() => {
     const pageNumbers = []
 
-    const currentPageSet = Math.floor((currentPage - 1) / NUM_PAGEES_TO_SHOW)
-    const currentStartPage = currentPageSet * NUM_PAGEES_TO_SHOW + 1
-    const currentEndPage = currentStartPage + NUM_PAGEES_TO_SHOW
+    const currentPageSet = Math.floor((currentPage - 1) / nPagesToShow)
+    const currentStartPage = currentPageSet * nPagesToShow + 1
+    const currentEndPage = currentStartPage + nPagesToShow
 
     for (
       let i = currentStartPage;
