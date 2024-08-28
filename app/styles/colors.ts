@@ -4,4 +4,4 @@ export const colors = {
   mid: '#81689D',
   midDark: '#474F7A',
   dark: '#1F2544',
-};
+}

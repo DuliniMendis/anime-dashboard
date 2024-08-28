@@ -5,7 +5,7 @@ import {
   Flex,
   SkeletonText,
   Skeleton,
-} from '@chakra-ui/react';
+} from '@chakra-ui/react'
 
 export default function AnimeDetailsFallback() {
   return (
@@ -27,5 +27,5 @@ export default function AnimeDetailsFallback() {
         </Box>
       </Container>
     </>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import { Button } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Button } from '@chakra-ui/react'
+import Link from 'next/link'
 
 export default function NotFound() {
   return (
@@ -10,5 +10,5 @@ export default function NotFound() {
         <Button>Go Back</Button>
       </Link>
     </main>
-  );
+  )
 }

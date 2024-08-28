@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Flex,
@@ -12,34 +12,34 @@ import {
   HStack,
   Stack,
   Text,
-} from "@chakra-ui/react";
-import Image from "next/image";
-import { logOut } from "../lib/actions";
-import { useRouter } from "next/navigation";
-import { useUserContext } from "../lib/context/userContext";
-import Link from "next/link";
+} from '@chakra-ui/react'
+import Image from 'next/image'
+import { logOut } from '../lib/actions'
+import { useRouter } from 'next/navigation'
+import { useUserContext } from '../lib/context/userContext'
+import Link from 'next/link'
 
 export const Header = () => {
-  const { user, setUser } = useUserContext();
+  const { user, setUser } = useUserContext()
 
-  const router = useRouter();
+  const router = useRouter()
 
   const handleEditDetails = () => {
-    router.push("/edit");
-  };
+    router.push('/edit')
+  }
 
   const handleLogOut = async () => {
-    setUser(undefined);
-    await logOut();
-  };
+    setUser(undefined)
+    await logOut()
+  }
 
   return (
-    <Box px={4} py={3} as="header">
-      <Flex justify="space-between" align="center" maxW="1200px" mx="auto">
-        <Link href="/">
+    <Box px={4} py={3} as='header'>
+      <Flex justify='space-between' align='center' maxW='1200px' mx='auto'>
+        <Link href='/'>
           <HStack spacing={{ base: 3, md: 7 }}>
-            <Image src="/anilogo.png" alt="AniRealm" width="50" height="50" />
-            <Heading as="h1" size="lg" color="white">
+            <Image src='/anilogo.png' alt='AniRealm' width='50' height='50' />
+            <Heading as='h1' size='lg' color='white'>
               AniRealm
             </Heading>
           </HStack>
@@ -47,13 +47,13 @@ export const Header = () => {
         {/* Avatar with Dropdown */}
         {user && (
           <HStack spacing={{ base: 3, md: 7 }}>
-            <Stack spacing={0} textAlign="right">
-              <Heading size="sm">{user.username}</Heading>
-              <Text size="sm">{user.jobTitle}</Text>
+            <Stack spacing={0} textAlign='right'>
+              <Heading size='sm'>{user.username}</Heading>
+              <Text size='sm'>{user.jobTitle}</Text>
             </Stack>
             <Menu>
-              <MenuButton rounded="full">
-                <Avatar size="md" />
+              <MenuButton rounded='full'>
+                <Avatar size='md' name={user.username} colorScheme='purple' />
               </MenuButton>
               <MenuList>
                 <MenuItem onClick={handleEditDetails}>Edit details</MenuItem>
@@ -64,5 +64,5 @@ export const Header = () => {
         )}
       </Flex>
     </Box>
-  );
-};
+  )
+}

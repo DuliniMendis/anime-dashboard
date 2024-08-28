@@ -1,7 +1,7 @@
-import { Suspense } from 'react';
-import AnimeDetails from '../../ui/Details';
-import Link from 'next/link';
-import { Button, Flex } from '@chakra-ui/react';
+import { Suspense } from 'react'
+import AnimeDetails from '../../ui/Details'
+import Link from 'next/link'
+import { Button, Flex } from '@chakra-ui/react'
 
 export default function DetailsPage({ params }: { params: { id: string } }) {
   return (
@@ -13,5 +13,5 @@ export default function DetailsPage({ params }: { params: { id: string } }) {
         </Link>
       </Flex>
     </Suspense>
-  );
+  )
 }

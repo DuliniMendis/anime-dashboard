@@ -1,25 +1,25 @@
-'use client';
+'use client'
 
-import { Suspense, useState } from 'react';
-import Pagination from './Pagination';
-import { List } from './List';
-import { AnimeListFallback } from './ListFallback';
+import { Suspense, useState } from 'react'
+import Pagination from './Pagination'
+import { List } from './List'
+import { AnimeListFallback } from './ListFallback'
 
 interface PageInfo {
-  totalPages: number;
-  itemsPerPage: number;
+  totalPages: number
+  itemsPerPage: number
 }
 
 export const AnimeList = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1)
   const [pageInfo, setPageInfo] = useState<PageInfo>({
     totalPages: 10,
     itemsPerPage: 20,
-  });
+  })
 
   const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+    setCurrentPage(page)
+  }
 
   return (
     <>
@@ -36,5 +36,5 @@ export const AnimeList = () => {
         />
       </Suspense>
     </>
-  );
-};
+  )
+}

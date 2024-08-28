@@ -3,14 +3,14 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/graphql",
-        destination: "https://graphql.anilist.co",
+        source: '/api/graphql',
+        destination: 'https://graphql.anilist.co',
       },
-    ];
+    ]
   },
   images: {
-    domains: ["s4.anilist.co"],
+    domains: ['s4.anilist.co'],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

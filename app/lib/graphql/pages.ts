@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 const MediaFragment = gql`
   fragment BasicMediaInfo on Media {
@@ -14,7 +14,7 @@ const MediaFragment = gql`
     averageScore
     popularity
   }
-`;
+`
 
 export const getPage = gql`
   query getPage(
@@ -35,7 +35,7 @@ export const getPage = gql`
     }
   }
   ${MediaFragment}
-`;
+`
 
 export const getMedia = gql`
   query getMedia($id: Int!) {
@@ -71,4 +71,4 @@ export const getMedia = gql`
     }
   }
   ${MediaFragment}
-`;
+`

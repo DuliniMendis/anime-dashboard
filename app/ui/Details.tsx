@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import { useSuspenseQuery } from '@apollo/client';
-import { Container, Heading, Box, Text, Image, Flex } from '@chakra-ui/react';
-import { notFound } from 'next/navigation';
-import { getMedia } from '../lib/graphql/pages';
-import { GetMediaQuery } from '../lib/graphql/pages.generated';
+import { useSuspenseQuery } from '@apollo/client'
+import { Container, Heading, Box, Text, Image, Flex } from '@chakra-ui/react'
+import { notFound } from 'next/navigation'
+import { getMedia } from '../lib/graphql/pages'
+import { GetMediaQuery } from '../lib/graphql/pages.generated'
 
 export default function AnimeDetails({ id }: { id: string }) {
   const { data } = useSuspenseQuery<GetMediaQuery>(getMedia, {
     variables: { id },
     fetchPolicy: 'cache-and-network',
-  });
+  })
 
   if (!data.Media) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -39,5 +39,5 @@ export default function AnimeDetails({ id }: { id: string }) {
         </Box>
       </Container>
     </>
-  );
+  )
 }

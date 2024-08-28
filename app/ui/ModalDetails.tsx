@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import {
   Modal,
@@ -8,15 +8,15 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-} from '@chakra-ui/react';
-import { useRouter } from 'next/navigation';
+} from '@chakra-ui/react'
+import { useRouter } from 'next/navigation'
 
 export const ModalDetails = ({ children }: { children: React.ReactNode }) => {
-  const router = useRouter();
+  const router = useRouter()
 
   const onClose = () => {
-    router.back();
-  };
+    router.back()
+  }
 
   return (
     <Modal isOpen onClose={onClose} size='xl'>
@@ -32,5 +32,5 @@ export const ModalDetails = ({ children }: { children: React.ReactNode }) => {
         </ModalFooter>
       </ModalContent>
     </Modal>
-  );
-};
+  )
+}

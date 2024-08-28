@@ -6,9 +6,9 @@ import {
   Heading,
   Box,
   Text,
-} from '@chakra-ui/react';
-import Image from 'next/image';
-import { BasicMediaInfoFragment } from '../lib/graphql/pages.generated';
+} from '@chakra-ui/react'
+import Image from 'next/image'
+import { BasicMediaInfoFragment } from '../lib/graphql/pages.generated'
 
 export const AnimeCard = ({ media }: { media: BasicMediaInfoFragment }) => {
   return (
@@ -37,5 +37,5 @@ export const AnimeCard = ({ media }: { media: BasicMediaInfoFragment }) => {
         </HStack>
       </CardBody>
     </Card>
-  );
-};
+  )
+}

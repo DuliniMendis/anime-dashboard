@@ -1,5 +1,5 @@
-import { Container, Heading, Stack } from '@chakra-ui/react';
-import { AnimeList } from '../ui/ListWithPagination';
+import { Container, Heading, Stack } from '@chakra-ui/react'
+import { AnimeList } from '../ui/ListWithPagination'
 
 export default function Information() {
   return (
@@ -17,5 +17,5 @@ export default function Information() {
         <AnimeList />
       </Stack>
     </Container>
-  );
+  )
 }

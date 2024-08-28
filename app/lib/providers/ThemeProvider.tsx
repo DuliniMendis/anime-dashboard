@@ -1,22 +1,19 @@
-'use client';
+'use client'
 
-import {
-  ChakraProvider,
-  createMultiStyleConfigHelpers,
-} from '@chakra-ui/react';
-import { extendTheme } from '@chakra-ui/react';
-import { cardAnatomy, menuAnatomy, modalAnatomy } from '@chakra-ui/anatomy';
-import { colors } from '@/app/styles/colors';
-import { fonts } from '@/app/styles/fonts';
+import { ChakraProvider, createMultiStyleConfigHelpers } from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react'
+import { cardAnatomy, menuAnatomy, modalAnatomy } from '@chakra-ui/anatomy'
+import { colors } from '@/app/styles/colors'
+import { fonts } from '@/app/styles/fonts'
 
-const cardStyle = createMultiStyleConfigHelpers(cardAnatomy.keys);
+const cardStyle = createMultiStyleConfigHelpers(cardAnatomy.keys)
 const cardBaseStyle = cardStyle.definePartsStyle({
   container: {
     backgroundColor: colors.light,
   },
-});
+})
 
-const menuStyle = createMultiStyleConfigHelpers(menuAnatomy.keys);
+const menuStyle = createMultiStyleConfigHelpers(menuAnatomy.keys)
 const menuBaseStyle = menuStyle.definePartsStyle({
   list: {
     bg: colors.light,
@@ -39,9 +36,9 @@ const menuBaseStyle = menuStyle.definePartsStyle({
     },
     border: 'none',
   },
-});
+})
 
-const modalStyle = createMultiStyleConfigHelpers(modalAnatomy.keys);
+const modalStyle = createMultiStyleConfigHelpers(modalAnatomy.keys)
 const modalBaseStyle = modalStyle.definePartsStyle({
   content: {
     bg: colors.light,
@@ -56,7 +53,7 @@ const modalBaseStyle = modalStyle.definePartsStyle({
   closeButton: {
     color: colors.midDark,
   },
-});
+})
 
 const theme = extendTheme({
   fonts: {
@@ -89,7 +86,7 @@ const theme = extendTheme({
     Menu: menuStyle.defineMultiStyleConfig({ baseStyle: menuBaseStyle }),
     Modal: modalStyle.defineMultiStyleConfig({ baseStyle: modalBaseStyle }),
   },
-});
+})
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -104,5 +101,5 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       </style>
       <ChakraProvider theme={theme}>{children}</ChakraProvider>
     </>
-  );
-};
+  )
+}

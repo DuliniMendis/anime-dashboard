@@ -1,5 +1,5 @@
-import { Card, Flex } from '@chakra-ui/react';
-import { LoginForm } from '../ui/forms/LoginForm';
+import { Card, Flex } from '@chakra-ui/react'
+import { LoginForm } from '../ui/forms/LoginForm'
 
 export default function LoginPage() {
   return (
@@ -8,5 +8,5 @@ export default function LoginPage() {
         <LoginForm />
       </Card>
     </Flex>
-  );
+  )
 }
