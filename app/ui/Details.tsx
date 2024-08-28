@@ -3,11 +3,10 @@
 import { useSuspenseQuery } from "@apollo/client";
 import { Container, Heading, Box, Text, Image, Flex } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
-import { getMedia } from "../graphql/pages";
-import { GetMediaQuery } from "../graphql/pages.generated";
+import { getMedia } from "../lib/graphql/pages";
+import { GetMediaQuery } from "../lib/graphql/pages.generated";
 
 export default function AnimeDetails({ id }: { id: string }) {
-  console.log("AnimeDetails", id);
   const { data } = useSuspenseQuery<GetMediaQuery>(getMedia, {
     variables: { id },
     fetchPolicy: "cache-and-network",
@@ -19,7 +18,7 @@ export default function AnimeDetails({ id }: { id: string }) {
 
   return (
     <>
-      <Flex alignItems="center" justifyContent={"center"} mt="3rem">
+      <Flex alignItems="center" justifyContent={"center"}>
         <Image
           src={data.Media.bannerImage || ""}
           alt={data.Media.title?.english || ""}

@@ -1,41 +1,30 @@
 "use server";
 
-import { signIn, signOut } from "@/auth";
 import { sql } from "@vercel/postgres";
 import { AuthError } from "next-auth";
-import { UserDBRecord } from "./definitions";
-// ...
+import { User, UserDBRecord } from "./types";
+import { signIn, signOut } from "./auth";
 
-export async function authenticate(_, formData: FormData) {
-  console.log("in authenticatio", formData);
+export const logIn = async (user: User) => {
   try {
-    console.log({ formData });
-    await signIn("credentials", formData);
+    await signIn("credentials", user);
   } catch (error) {
-    console.log("error", error);
     if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return "Invalid credentials. sdfsd";
-        default:
-          return "Something went wrong.";
-      }
+      return "Something went wrong while logging in";
     }
     throw error;
   }
-}
+};
 
-export async function logOut() {
-  console.log("in logOut");
-
+export const logOut = async () => {
   await signOut();
-}
+};
 
-export async function editDetails(
+export const editDetails = async (
   prevUserName: string,
   username: string,
   jobTitle: string
-) {
+) => {
   try {
     if (prevUserName !== username) {
       const users =
@@ -49,14 +38,14 @@ export async function editDetails(
   } catch (error) {
     throw new Error("Failed to update user.");
   }
-}
+};
 
-export async function doesUsernameAndJobTitleMatch(
+export const doesUsernameAndJobTitleMatch = async (
   username: string,
   jobTitle: string
-) {
+) => {
   const users =
     await sql<UserDBRecord>`SELECT username FROM anime_users WHERE username=${username} AND job_title=${jobTitle}`;
 
   return users.rows.length === 0;
-}
+};

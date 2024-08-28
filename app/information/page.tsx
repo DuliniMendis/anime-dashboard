@@ -1,21 +1,19 @@
-import { Container, Heading, Text, Stack } from "@chakra-ui/react";
-import { AnimeList } from "../ui/AnimeList";
+import { Container, Heading, Stack } from "@chakra-ui/react";
+import { AnimeList } from "../ui/ListWithPagination";
 
-export default function Home() {
+export default function Information() {
   return (
-    <Container maxW="1200px" padding="5rem 0">
-      <Stack spacing="20" alignItems="center">
-        <Stack spacing="10" textAlign="center" maxW="800px" padding="0 2rem">
-          <Heading as="h2" size="xl">
-            Embark on a wild journey through the realms of your favorite anime!
-          </Heading>
-          <Text fontSize="lg">
-            Whether you are a seasoned otaku or a curious newbie, dive into a
-            world where heroes never back down, friendships conquer all, and
-            every episode leaves you craving more. Ready to unleash your inner
-            fan? Your next adventure starts here!
-          </Text>
-        </Stack>
+    <Container maxW="1200px" paddingTop={20}>
+      <Stack spacing="7" alignItems="center">
+        <Heading
+          as="h2"
+          size="xl"
+          textAlign="center"
+          maxW="800px"
+          padding="0 2rem"
+        >
+          Take a peek at the most popular anime shows of the season
+        </Heading>
         <AnimeList />
       </Stack>
     </Container>

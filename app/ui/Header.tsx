@@ -5,17 +5,18 @@ import {
   Heading,
   Menu,
   MenuButton,
-  Button,
   Avatar,
   MenuList,
   MenuItem,
   Box,
   HStack,
+  Stack,
+  Text,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { logOut } from "../lib/actions";
 import { useRouter } from "next/navigation";
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../lib/context/userContext";
 
 export const Header = () => {
   const { user, setUser } = useUserContext();
@@ -31,8 +32,6 @@ export const Header = () => {
     await logOut();
   };
 
-  console.log("Header", user);
-
   return (
     <Box px={4} py={3} as="header">
       <Flex justify="space-between" align="center" maxW="1200px" mx="auto">
@@ -44,23 +43,22 @@ export const Header = () => {
         </HStack>
         {/* Avatar with Dropdown */}
         {user && (
-          <Menu>
-            <MenuButton
-              as={Button}
-              rounded="full"
-              variant="link"
-              cursor="pointer"
-              minW={0}
-              color="white"
-              _hover={{ textDecoration: "none" }}
-            >
-              <Avatar size="md" />
-            </MenuButton>
-            <MenuList>
-              <MenuItem onClick={handleEditDetails}>Edit details</MenuItem>
-              <MenuItem onClick={handleLogOut}>Log out</MenuItem>
-            </MenuList>
-          </Menu>
+          <HStack spacing={5}>
+            <Stack spacing={0} textAlign="right">
+              <Heading size="sm">{user.jobTitle}</Heading>
+              <Text size="sm">{user.jobTitle}</Text>
+            </Stack>
+
+            <Menu>
+              <MenuButton rounded="full">
+                <Avatar size="md" />
+              </MenuButton>
+              <MenuList>
+                <MenuItem onClick={handleEditDetails}>Edit details</MenuItem>
+                <MenuItem onClick={handleLogOut}>Log out</MenuItem>
+              </MenuList>
+            </Menu>
+          </HStack>
         )}
       </Flex>
     </Box>

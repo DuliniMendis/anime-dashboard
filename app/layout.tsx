@@ -1,40 +1,50 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Providers } from "./providers";
-import { ApolloWrapper } from "./ApolloWrapper";
+import { Poppins, Quicksand } from "next/font/google";
+import { ThemeProvider } from "./lib/providers/ThemeProvider";
+import { ApolloProvider } from "./lib/providers/ApolloProvider";
 import { Header } from "./ui/Header";
-import { auth } from "@/auth";
-import { UserContextProvider } from "./context/userContext";
+import { Flex } from "@chakra-ui/react";
+import { UserContextProvider } from "@/app/lib/providers/UserContextProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppings = Poppins({ subsets: ["latin"], weight: ["300", "400", "500"] });
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+});
 
 export const metadata: Metadata = {
   title: "AniRealm",
   description: "A simple app to keep track of your favorite anime and manga",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
   modal,
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
 }>) {
-  const session = await auth();
-  console.log({ session });
-
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ApolloWrapper>
-          <Providers>
+      <body className={quicksand.className}>
+        <ApolloProvider>
+          <ThemeProvider>
             <UserContextProvider>
-              <Header />
-              {children}
+              <Flex direction="column" height="100vh">
+                <Header />
+                <Flex
+                  direction="column"
+                  flex="1"
+                  overflowY="auto"
+                  paddingBottom={20}
+                >
+                  {children}
+                </Flex>
+              </Flex>
               {modal}
             </UserContextProvider>
-          </Providers>
-        </ApolloWrapper>
+          </ThemeProvider>
+        </ApolloProvider>
       </body>
     </html>
   );

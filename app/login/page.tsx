@@ -1,9 +1,12 @@
-import { LoginForm } from "../ui/LoginForm";
+import { Card, Flex } from "@chakra-ui/react";
+import { LoginForm } from "../ui/forms/LoginForm";
 
 export default function LoginPage() {
   return (
-    <main>
-      <LoginForm />
-    </main>
+    <Flex height="90vh" align="center" justify="center">
+      <Card px="5rem" py="3rem">
+        <LoginForm />
+      </Card>
+    </Flex>
   );
 }

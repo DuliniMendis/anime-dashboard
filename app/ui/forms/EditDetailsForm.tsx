@@ -1,6 +1,5 @@
 "use client";
 
-import { useFormState } from "react-dom";
 import {
   FormControl,
   FormLabel,
@@ -9,13 +8,11 @@ import {
   Card,
   Heading,
   Button,
-  Text,
   Stack,
-  CardFooter,
   HStack,
 } from "@chakra-ui/react";
-import { useUserContext } from "../context/userContext";
-import { editDetails } from "../lib/actions";
+import { useUserContext } from "../../lib/context/userContext";
+import { editDetails } from "../../lib/actions";
 import { useRouter } from "next/navigation";
 
 export const EditDetailsForm = () => {

@@ -1,22 +1,10 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { User } from "../lib/definitions";
 import { useRouter } from "next/navigation";
-import { logOut } from "../lib/actions";
 import { getCookie, setCookie } from "cookies-next";
-
-type UserContextType = {
-  user: User | undefined;
-  setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
-};
-
-const USER_COOKIE_KEY = "anime_user";
-
-export const UserContext = createContext<UserContextType>({
-  user: undefined,
-  setUser: () => {},
-});
+import { useState, useEffect } from "react";
+import { User } from "../types";
+import { USER_COOKIE_KEY, UserContext } from "../context/userContext";
 
 export const UserContextProvider = ({
   children,
@@ -29,7 +17,6 @@ export const UserContextProvider = ({
 
   useEffect(() => {
     const userCookie = getCookie(USER_COOKIE_KEY);
-    console.log("cookie on load", userCookie);
     if (userCookie) {
       setUser(JSON.parse(userCookie));
     }
@@ -51,8 +38,4 @@ export const UserContextProvider = ({
       {children}
     </UserContext.Provider>
   );
-};
-
-export const useUserContext = () => {
-  return useContext(UserContext);
 };

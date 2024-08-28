@@ -1,14 +1,13 @@
 import NextAuth from "next-auth";
-import { authConfig } from "./auth.config";
+import { authConfig } from "../../auth.config";
 import Credentials from "next-auth/providers/credentials";
 import { sql } from "@vercel/postgres";
-import { User, UserDBRecord } from "./app/lib/definitions";
-import { z } from "zod";
+import { User, UserDBRecord } from "./types";
 
-async function getUser(
+const getUser = async (
   username: string,
   jobTitle: string
-): Promise<User | undefined> {
+): Promise<User | undefined> => {
   console.log({ username, jobTitle });
   let user: User;
   try {
@@ -43,7 +42,7 @@ async function getUser(
   }
 
   return user;
-}
+};
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -51,17 +50,9 @@ export const { auth, signIn, signOut } = NextAuth({
     Credentials({
       async authorize(credentials) {
         console.log({ credentials });
-        const parsedCredentials = z
-          .object({ username: z.string(), jobTitle: z.string() })
-          .safeParse(credentials);
-
-        if (parsedCredentials.success) {
-          const { username, jobTitle } = parsedCredentials.data;
-          const user = await getUser(username, jobTitle);
-          if (!user) return null;
-          return user;
-        }
-        return null;
+        const { username, jobTitle } = credentials as User;
+        const user = await getUser(username, jobTitle);
+        return user || null;
       },
     }),
   ],

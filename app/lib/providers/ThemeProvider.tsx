@@ -6,35 +6,36 @@ import {
 } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { cardAnatomy, menuAnatomy, modalAnatomy } from "@chakra-ui/anatomy";
-import { UserContextProvider } from "./context/userContext";
+import { colors } from "@/app/styles/colors";
+import { fonts } from "@/app/styles/fonts";
 
 const cardStyle = createMultiStyleConfigHelpers(cardAnatomy.keys);
 const cardBaseStyle = cardStyle.definePartsStyle({
   container: {
-    backgroundColor: "#e4e4f0",
+    backgroundColor: colors.light,
   },
 });
 
 const menuStyle = createMultiStyleConfigHelpers(menuAnatomy.keys);
 const menuBaseStyle = menuStyle.definePartsStyle({
   list: {
-    bg: "#e4e4f0",
+    bg: colors.light,
   },
   item: {
-    bg: "#e4e4f0",
-    color: "#474F7A",
+    bg: colors.light,
+    color: colors.midDark,
     _hover: {
-      bg: "#474F7A",
-      color: "white",
+      bg: colors.midDark,
+      color: colors.white,
     },
     border: "none",
   },
   button: {
-    bg: "#e4e4f0",
-    color: "#474F7A",
+    bg: colors.light,
+    color: colors.midDark,
     _hover: {
-      bg: "#474F7A",
-      color: "white",
+      bg: colors.midDark,
+      color: colors.white,
     },
     border: "none",
   },
@@ -43,38 +44,42 @@ const menuBaseStyle = menuStyle.definePartsStyle({
 const modalStyle = createMultiStyleConfigHelpers(modalAnatomy.keys);
 const modalBaseStyle = modalStyle.definePartsStyle({
   content: {
-    bg: "#e4e4f0",
+    bg: colors.light,
   },
   header: {
-    bg: "#474F7A",
-    color: "#1F2544",
+    bg: colors.midDark,
+    color: colors.dark,
   },
   body: {
-    color: "#474F7A",
+    color: colors.midDark,
   },
   closeButton: {
-    color: "#474F7A",
+    color: colors.midDark,
   },
 });
 
 const theme = extendTheme({
+  fonts: {
+    heading: "var(--font-firasans)",
+    body: "var(--font-roboto)",
+  },
   styles: {
     global: {
       body: {
-        bg: "#1F2544",
-        color: "white",
+        bg: colors.dark,
+        color: colors.white,
       },
       header: {
-        bg: "#474F7A",
+        bg: colors.midDark,
       },
       h1: {
-        color: "#81689D",
+        color: colors.mid,
       },
       input: {
-        bg: "white",
-        color: "#474F7A",
+        bg: colors.white,
+        color: colors.midDark,
         _placeholder: {
-          color: "#81689D",
+          color: colors.mid,
         },
       },
     },
@@ -86,10 +91,18 @@ const theme = extendTheme({
   },
 });
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <UserContextProvider>
+    <>
+      <style jsx global>
+        {`
+          :root {
+            --font-firasans: ${fonts.firaSans.style.fontFamily};
+            --font-roboto: ${fonts.roboto.style.fontFamily};
+          }
+        `}
+      </style>
       <ChakraProvider theme={theme}>{children}</ChakraProvider>
-    </UserContextProvider>
+    </>
   );
-}
+};

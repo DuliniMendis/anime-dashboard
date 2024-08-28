@@ -1,4 +1,4 @@
-import { EditDetailsForm } from "../ui/EditDetailsForm";
+import { EditDetailsForm } from "../ui/forms/EditDetailsForm";
 
 export default function EditDetails() {
   return (
