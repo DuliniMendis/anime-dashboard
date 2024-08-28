@@ -37,13 +37,7 @@ export default function Home() {
             </Button>
           </Link>
         </Stack>
-        <Image
-          src="/coverimg.png"
-          alt="cover image"
-          width="500"
-          height="500"
-          style={{ position: "fixed", bottom: "0px", marginBottom: "-20px" }}
-        />
+        <Image src="/coverimg.png" alt="cover image" width="300" height="350" />
       </Container>
     </>
   );

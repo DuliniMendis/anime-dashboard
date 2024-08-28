@@ -37,7 +37,11 @@ export const List = ({
   }, [data]);
 
   return (
-    <SimpleGrid columns={{ base: 1, sm: 1, md: 2, lg: 2, xl: 3 }} spacing={4}>
+    <SimpleGrid
+      columns={{ base: 1, sm: 1, md: 2, lg: 2, xl: 3 }}
+      spacing={4}
+      mb={20}
+    >
       {items.map((item) => (
         <Link href={`/information/${item.id}`} key={item.id}>
           <AnimeCard media={item} />

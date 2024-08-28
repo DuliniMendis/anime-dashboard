@@ -35,7 +35,7 @@ export const Header = () => {
   return (
     <Box px={4} py={3} as="header">
       <Flex justify="space-between" align="center" maxW="1200px" mx="auto">
-        <HStack spacing={10}>
+        <HStack spacing={{ base: 3, md: 7 }}>
           <Image src="/anilogo.png" alt="AniRealm" width="50" height="50" />
           <Heading as="h1" size="lg" color="white">
             AniRealm
@@ -43,12 +43,11 @@ export const Header = () => {
         </HStack>
         {/* Avatar with Dropdown */}
         {user && (
-          <HStack spacing={5}>
+          <HStack spacing={{ base: 3, md: 7 }}>
             <Stack spacing={0} textAlign="right">
-              <Heading size="sm">{user.jobTitle}</Heading>
+              <Heading size="sm">{user.username}</Heading>
               <Text size="sm">{user.jobTitle}</Text>
             </Stack>
-
             <Menu>
               <MenuButton rounded="full">
                 <Avatar size="md" />

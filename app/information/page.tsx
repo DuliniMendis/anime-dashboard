@@ -3,7 +3,7 @@ import { AnimeList } from "../ui/ListWithPagination";
 
 export default function Information() {
   return (
-    <Container maxW="1200px" paddingTop={20}>
+    <Container maxW="1200px" py={20} px={0}>
       <Stack spacing="7" alignItems="center">
         <Heading
           as="h2"

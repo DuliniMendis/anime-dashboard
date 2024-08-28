@@ -47,11 +47,12 @@ const Pagination = ({
 
   return (
     <Stack spacing={5} mt={8}>
-      <HStack spacing={4} justify="center">
+      <HStack spacing={{ base: 2, md: 4 }} justify="center">
         <Button
           onClick={handlePrevPage}
           isDisabled={currentPage === 1}
           colorScheme="purple"
+          size={{ base: "sm", md: "md" }}
         >
           Prev
         </Button>
@@ -61,6 +62,7 @@ const Pagination = ({
             key={page}
             onClick={() => onPageChange(page)}
             colorScheme={page === currentPage ? "purple" : "gray"}
+            size={{ base: "sm", md: "md" }}
           >
             {page}
           </Button>
@@ -70,6 +72,7 @@ const Pagination = ({
           onClick={handleNextPage}
           isDisabled={currentPage === totalPages}
           colorScheme="purple"
+          size={{ base: "sm", md: "md" }}
         >
           Next
         </Button>

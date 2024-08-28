@@ -32,12 +32,7 @@ export default function RootLayout({
             <UserContextProvider>
               <Flex direction="column" height="100vh">
                 <Header />
-                <Flex
-                  direction="column"
-                  flex="1"
-                  overflowY="auto"
-                  paddingBottom={20}
-                >
+                <Flex direction="column" flex="1" overflowY="auto">
                   {children}
                 </Flex>
               </Flex>
