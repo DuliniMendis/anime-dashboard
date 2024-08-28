@@ -22,16 +22,16 @@ export const LoginForm = () => {
   const [mismatchError, setMismatchError] = useState("");
 
   const checkIfUsernameExists = async (username: string, jobTitle: string) => {
-    const usernameAndJobTitleMismatch = await doesUsernameAndJobTitleMatch(
+    const usernameAndJobTitleMatch = await doesUsernameAndJobTitleMatch(
       username,
       jobTitle
     );
-    if (usernameAndJobTitleMismatch) {
+    if (usernameAndJobTitleMatch) {
+      setMismatchError("");
+    } else {
       setMismatchError(
         "Username and job title does not match what was previously used."
       );
-    } else {
-      setMismatchError("");
     }
   };
 

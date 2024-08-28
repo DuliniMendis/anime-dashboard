@@ -45,7 +45,7 @@ export const doesUsernameAndJobTitleMatch = async (
   jobTitle: string
 ) => {
   const users =
-    await sql<UserDBRecord>`SELECT username FROM anime_users WHERE username=${username} AND job_title=${jobTitle}`;
+    await sql<UserDBRecord>`SELECT username, job_title FROM anime_users WHERE username=${username}`;
 
-  return users.rows.length === 0;
+  return users.rows.length === 0 || users.rows[0].job_title === jobTitle;
 };
