@@ -48,7 +48,7 @@ export default function About() {
           >
             this Git repo.
           </Link>
-          Hopefully, I haven't broken it while trying to improve it 😅
+          Hopefully, I have not broken it while trying to improve it.
         </Text>
 
         <Heading as='h2' size='md' mb={2}>
@@ -75,8 +75,8 @@ export default function About() {
         </Text>
         <UnorderedList mb={4}>
           <ListItem>
-            The forms don't have loading states and error messages coming back
-            from the server. If I had more time, I would've added those.
+            The forms do not have loading states and error messages coming back
+            from the server. If I had more time, I would have added those.
           </ListItem>
         </UnorderedList>
 
@@ -86,9 +86,9 @@ export default function About() {
         <UnorderedList mb={4}>
           <ListItem>
             I made the modal with anime details show up by using route
-            interception. It could've been done in a simple modal but I thought
-            I'd try the parallel route concept just to add some (maybe
-            unnecessary) complexity.
+            interception. It could have been done in a simple modal but I
+            thought I would try the parallel route concept just to add some
+            (maybe unnecessary) complexity.
           </ListItem>
         </UnorderedList>
 
@@ -125,7 +125,7 @@ export default function About() {
           </ListItem>
           <ListItem>
             This meant that I had to do <Code>next-auth</Code> login/logouts as
-            well as store/clear the cookie, which isn't ideal since the two
+            well as store/clear the cookie, which is not ideal since the two
             actions can go out of sync.
           </ListItem>
           <ListItem>
@@ -134,10 +134,10 @@ export default function About() {
           </ListItem>
           <ListItem>
             The login and edit details forms show an error if you try to use a
-            username that is already used with a job title that doesn't match
+            username that is already used with a job title that does not match
             the existing username. Since this is a made-up scenario and users
-            won't be using usernames and job titles to log in, I thought it was
-            fine to show this error. I wouldn't do this if passwords were
+            will not be using usernames and job titles to log in, I thought it
+            was fine to show this error. I would not do this if passwords were
             involved since you can find passwords of other users with this
             security loophole.
           </ListItem>
@@ -153,12 +153,12 @@ export default function About() {
             Obviously, they are just examples and not comprehensive at all.
           </ListItem>
           <ListItem>
-            There are no E2E tests, but that would be something I'd have in a
-            typical CI/CD pipeline.
+            There are no E2E tests, but that would be something I would have in
+            a typical CI/CD pipeline.
           </ListItem>
           <ListItem>
-            I would've used <Code>faker-js</Code> for mocking values for tests
-            but I didn't do it in this app since it might be overkill.
+            I would have used <Code>faker-js</Code> for mocking values for tests
+            but I did not do it in this app since it might be overkill.
           </ListItem>
         </UnorderedList>
 
@@ -170,7 +170,7 @@ export default function About() {
             I added <Code>Prettier</Code> for making formatting consistent.
           </ListItem>
           <ListItem>
-            I would've added an import sorting package as well if I had time.
+            I would have added an import sorting package as well if I had time.
           </ListItem>
         </UnorderedList>
       </Stack>
