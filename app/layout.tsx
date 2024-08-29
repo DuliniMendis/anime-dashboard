@@ -4,6 +4,7 @@ import { ApolloProvider } from './lib/providers/ApolloProvider'
 import { Header } from './components/Header'
 import { Flex } from '@chakra-ui/react'
 import { UserContextProvider } from '@/app/lib/providers/UserContextProvider'
+
 export const metadata: Metadata = {
   title: 'AniRealm',
   description: 'A simple app to keep track of your favorite anime and manga',
