@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AniRealm
+
+This is a simple list and details pages app made with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) using [Next.js](https://nextjs.org/) version 14.
 
 ## Getting Started
 
-First, run the development server:
-
-```bash
+- Clone the repository in you local environment. 
+- You might need to change you node version to v20.16.0. You can use [nvm](https://github.com/nvm-sh/nvm) to keep multiple node versions and switch between them.
+- You can use any of the popular package managers to install dependencies and run the development server.
+```
+npm install
 npm run dev
-# or
+```
+or 
+```
+yarn install
 yarn dev
-# or
+```
+or
+```
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To run tests:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm test
+```
+or 
+```
+yarn test
+```
+or 
+```
+pnpm test
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## See it live!
 
-## Learn More
+You can see the deployed version [here](https://anime-dashboard-blond.vercel.app/).
+Hopefully I haven't broken it while trying to improve it 😅
 
-To learn more about Next.js, take a look at the following resources:
+## The development process
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+I've been using NextJS 13 with the pages router and client-side pages in my current job so it was a learning experience to use server side rendering. It's not a fully polished production app but I tried to incorporate some additional features that were not in the design brief. They are outlined below.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### **GraphQL**
 
-## Deploy on Vercel
+- I setup `graphql-codegen` to generate types with the co-location plugin to prevent types from the two queries I was using from conflicting with each other.
+- Ideally I would also make a factory generator that generates mock data for each query so they can be used in testing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### **Forms**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The forms don't have loading states and error messages coming back from the server. If I had more time, I would've added those.
+
+### **Modal and interception**
+
+- I made the modal with anime details show up by using route interception. It could've been done in a simple modal but I thought I'd try the parallel route concept just to add some (maybe unnecessary) complexity.
+
+### **Styles**
+
+- I extended the theme in `Chakra UI` a bit and used some Google fonts.
+- This was the first time I used `Chakra UI` but it was pretty easy to use.
+
+### **Authentication**
+
+- I used `next-auth` to block routes until users logged in using a middleware pattern.
+- I also added a `Postgres` database that stores the user data. 
+- I had trouble getting access to the next-auth session from the client side so I had to store the user session with user data in a cookie using `cookies-next`.
+- This meant that I had to do next-auth login/logouts as well as store/clear the cookie, which isn't ideal since the two actions can go out of sync.
+- Ideally I would tinker a bit more with next-auth to get the session returned from it.
+- The login and edit details forms show an error if you try to use a username that is already used with a jobTitle that doesn't match the existing username. Since this  is a made-up scenario and users won't be using usernames and job titles to log in, I thought it was fine to show this error. I wouldn't do this if passwords were involved since you can find passwords of other users with this security loophole.
+
+### **Testing**
+
+- I configured `jest` and `React Testing Library` and wrote a few unit tests. Obviously they are just examples and not comprehensive at all.
+- There are no E2E tests but that would be something I'd have in a typical CI/CD pipeline.
+
+### **Formatting**
+
+- I added `Prettier` for making formatting consistent.
+- I would've added an import sorting package as well if I had time.
