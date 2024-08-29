@@ -1,4 +1,4 @@
-import { Roboto, Fira_Sans } from 'next/font/google'
+import { Quicksand, Fira_Sans } from 'next/font/google'
 
 const firaSans = Fira_Sans({
   subsets: ['latin'],
@@ -6,13 +6,13 @@ const firaSans = Fira_Sans({
   weight: ['300', '400'],
 })
 
-const roboto = Roboto({
+const quicksand = Quicksand({
   subsets: ['latin'],
   variable: '--font-quicksand',
   weight: '700',
 })
 
 export const fonts = {
-  firaSans,
-  roboto,
+  heading: firaSans,
+  body: quicksand,
 }
