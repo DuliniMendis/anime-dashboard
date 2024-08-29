@@ -1,7 +1,6 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { getCookie, setCookie } from 'cookies-next'
+import { deleteCookie, getCookie, setCookie } from 'cookies-next'
 import { useState, useEffect } from 'react'
 import { User } from '../types'
 import { UserContext } from '../context/userContext'
@@ -14,8 +13,6 @@ export const UserContextProvider = ({
 }) => {
   const [user, setUser] = useState<User>()
 
-  const router = useRouter()
-
   useEffect(() => {
     const userCookie = getCookie(USER_COOKIE_KEY)
     if (userCookie) {
@@ -26,8 +23,10 @@ export const UserContextProvider = ({
   useEffect(() => {
     if (user) {
       setCookie(USER_COOKIE_KEY, JSON.stringify(user))
+    } else {
+      deleteCookie(USER_COOKIE_KEY)
     }
-  }, [user, router])
+  }, [user])
 
   return (
     <UserContext.Provider

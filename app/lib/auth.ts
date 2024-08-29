@@ -8,36 +8,27 @@ const getUser = async (
   username: string,
   jobTitle: string,
 ): Promise<User | undefined> => {
-  let user: User
   try {
+    let id: string
     const users =
-      await sql<UserDBRecord>`SELECT username, job_title FROM anime_users WHERE username=${username}`
+      await sql<UserDBRecord>`SELECT id FROM anime_users WHERE username=${username}`
 
     if (!users.rows.length) {
       await sql<User>`INSERT INTO anime_users (username, job_title) VALUES (${username}, ${jobTitle})`
       const createdUsers =
-        await sql<UserDBRecord>`SELECT username, job_title FROM anime_users WHERE username=${username}`
-      user = {
-        id: createdUsers.rows[0].id,
-        username: createdUsers.rows[0].username,
-        jobTitle: createdUsers.rows[0].job_title,
-      }
+        await sql<UserDBRecord>`SELECT id FROM anime_users WHERE username=${username}`
+      id = createdUsers.rows[0].id
     } else {
-      user = {
-        id: users.rows[0].id,
-        username: users.rows[0].username,
-        jobTitle: users.rows[0].job_title,
-      }
+      id = users.rows[0].id
+    }
+    return {
+      id,
+      username,
+      jobTitle,
     }
   } catch (error) {
     throw new Error('Failed to fetch user.')
   }
-
-  if (jobTitle !== user.jobTitle) {
-    throw new Error('Job title does not match.')
-  }
-
-  return user
 }
 
 export const { auth, signIn, signOut } = NextAuth({

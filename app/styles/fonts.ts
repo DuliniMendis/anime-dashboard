@@ -13,6 +13,6 @@ const quicksand = Quicksand({
 })
 
 export const fonts = {
-  firaSans,
-  quicksand,
+  heading: firaSans,
+  body: quicksand,
 }
