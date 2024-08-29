@@ -58,7 +58,7 @@ const modalBaseStyle = modalStyle.definePartsStyle({
 const theme = extendTheme({
   fonts: {
     heading: 'var(--font-firasans)',
-    body: 'var(--font-roboto)',
+    body: 'var(--font-quicksand)',
   },
   colors: {
     purple: {
@@ -100,7 +100,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
         {`
           :root {
             --font-firasans: ${fonts.firaSans.style.fontFamily};
-            --font-roboto: ${fonts.roboto.style.fontFamily};
+            --font-quicksand: ${fonts.quicksand.style.fontFamily};
           }
         `}
       </style>
