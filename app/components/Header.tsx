@@ -54,7 +54,13 @@ export const Header = () => {
             </Stack>
             <Menu>
               <MenuButton rounded='full'>
-                <Avatar size='md' name={user.username} bgColor={colors.light} />
+                <Avatar
+                  size='md'
+                  name={user.username}
+                  bgColor={colors.light}
+                  color={colors.mid}
+                  fontWeight={600}
+                />
               </MenuButton>
               <MenuList>
                 <MenuItem onClick={handleEditDetails}>Edit details</MenuItem>

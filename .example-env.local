@@ -1,0 +1,8 @@
+POSTGRES_URL="postgres://default:40ozqmDcuSBJ@ep-jolly-fire-a75i7501-pooler.ap-southeast-2.aws.neon.tech:5432/verceldb?sslmode=require"
+POSTGRES_PRISMA_URL="postgres://default:40ozqmDcuSBJ@ep-jolly-fire-a75i7501-pooler.ap-southeast-2.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
+POSTGRES_URL_NO_SSL="postgres://default:40ozqmDcuSBJ@ep-jolly-fire-a75i7501-pooler.ap-southeast-2.aws.neon.tech:5432/verceldb"
+POSTGRES_URL_NON_POOLING="postgres://default:40ozqmDcuSBJ@ep-jolly-fire-a75i7501.ap-southeast-2.aws.neon.tech:5432/verceldb?sslmode=require"
+POSTGRES_USER="default"
+POSTGRES_HOST="ep-jolly-fire-a75i7501-pooler.ap-southeast-2.aws.neon.tech"
+POSTGRES_PASSWORD= # add password here
+POSTGRES_DATABASE="verceldb"

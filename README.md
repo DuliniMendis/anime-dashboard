@@ -6,6 +6,8 @@ This is a simple list and details pages app made with [`create-next-app`](https:
 
 - Clone the repository in you local environment. 
 - You might need to change you node version to v20.16.0. You can use [nvm](https://github.com/nvm-sh/nvm) to keep multiple node versions and switch between them.
+- Copy the `.example-env` file as `.env` and add the `AUTH_SECRET`.
+- Copy the `.example-env.local` file as `.env.local` and add the `POSTGRES_PASSWORD`.
 - You can use any of the popular package managers to install dependencies and run the development server.
 ```
 npm install
