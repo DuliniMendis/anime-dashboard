@@ -11,8 +11,9 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react'
 import { logIn, doesUsernameAndJobTitleMatch } from '@/app/lib/actions'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { UserContext } from '@/app/lib/context/userContext'
+import { debounce } from 'lodash'
 
 export const LoginForm = () => {
   const userContext = useContext(UserContext)
@@ -21,28 +22,32 @@ export const LoginForm = () => {
   const [jobTitle, setJobTitle] = useState('')
   const [mismatchError, setMismatchError] = useState('')
 
-  useEffect(() => {
-    const checkIfUsernameExists = async (
-      username: string,
-      jobTitle: string,
-    ) => {
-      const usernameAndJobTitleMatch = await doesUsernameAndJobTitleMatch(
-        username,
-        jobTitle,
+  // Check if username and job title match what was previously used
+  const checkIfUsernameExists = async (username: string, jobTitle: string) => {
+    const usernameAndJobTitleMatch = await doesUsernameAndJobTitleMatch(
+      username,
+      jobTitle,
+    )
+    if (usernameAndJobTitleMatch) {
+      setMismatchError('')
+    } else {
+      setMismatchError(
+        'Username and job title does not match what was previously used.',
       )
-      if (usernameAndJobTitleMatch) {
-        setMismatchError('')
-      } else {
-        setMismatchError(
-          'Username and job title does not match what was previously used.',
-        )
-      }
     }
+  }
 
+  const debouncedCheckIfUsernameExists = useMemo(
+    () => debounce(checkIfUsernameExists, 500),
+    [],
+  )
+
+  useEffect(() => {
     if (username && jobTitle) {
-      checkIfUsernameExists(username, jobTitle)
+      debouncedCheckIfUsernameExists(username, jobTitle)
     }
   }, [username, jobTitle])
+  // ---------------------------------------------------------------
 
   const handleLogin = async () => {
     await logIn({ username, jobTitle })
