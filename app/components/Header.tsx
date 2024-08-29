@@ -15,19 +15,12 @@ import {
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { logOut } from '../lib/actions'
-import { useRouter } from 'next/navigation'
 import { useUserContext } from '../lib/context/userContext'
 import Link from 'next/link'
 import { colors } from '../styles/colors'
 
 export const Header = () => {
   const { user, setUser } = useUserContext()
-
-  const router = useRouter()
-
-  const handleEditDetails = () => {
-    router.push('/edit')
-  }
 
   const handleLogOut = async () => {
     setUser(undefined)
@@ -46,25 +39,30 @@ export const Header = () => {
           </HStack>
         </Link>
         {/* Avatar with Dropdown only shown after login */}
-        {user && (
+        {!!user && (
           <HStack spacing={{ base: 3, md: 7 }}>
             <Stack spacing={0} textAlign='right'>
-              <Heading size='sm'>{user.username}</Heading>
-              <Text size='sm'>{user.jobTitle}</Text>
+              <Heading size='sm'>{user?.username}</Heading>
+              <Text size='sm'>{user?.jobTitle}</Text>
             </Stack>
             <Menu>
               <MenuButton rounded='full'>
                 <Avatar
                   size='md'
-                  name={user.username}
+                  name={user?.username}
                   bgColor={colors.light}
                   color={colors.mid}
                   fontWeight={600}
                 />
               </MenuButton>
               <MenuList>
-                <MenuItem onClick={handleEditDetails}>Edit details</MenuItem>
+                <Link href='/edit'>
+                  <MenuItem>Edit details</MenuItem>
+                </Link>
                 <MenuItem onClick={handleLogOut}>Log out</MenuItem>
+                <Link href='/about'>
+                  <MenuItem>Behind the scenes</MenuItem>
+                </Link>
               </MenuList>
             </Menu>
           </HStack>
