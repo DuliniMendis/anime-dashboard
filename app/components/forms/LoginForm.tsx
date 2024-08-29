@@ -46,8 +46,7 @@ export const LoginForm = () => {
     if (username && jobTitle) {
       debouncedCheckIfUsernameExists(username, jobTitle)
     }
-  }, [username, jobTitle])
-  // ---------------------------------------------------------------
+  }, [username, jobTitle, debouncedCheckIfUsernameExists])
 
   const handleLogin = async () => {
     await logIn({ username, jobTitle })

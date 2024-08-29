@@ -35,8 +35,9 @@ describe('Header', () => {
     fireEvent.click(avatar)
 
     await waitFor(() => {
-      expect(screen.getByText(/edit details/i)).toBeVisible()
-      expect(screen.getByText(/log out/i)).toBeVisible()
+      expect(screen.getByText(/Edit details/i)).toBeVisible()
+      expect(screen.getByText(/Behind the scenes/i)).toBeVisible()
+      expect(screen.getByText(/Log out/i)).toBeVisible()
     })
   })
 })

@@ -43,7 +43,7 @@ export const Pagination = ({
       endIndex,
       totalItems,
     }
-  }, [currentPage, totalPages, itemsPerPage])
+  }, [currentPage, nPagesToShow, totalPages, itemsPerPage])
 
   const handleNextPage = () => onPageChange(currentPage + 1)
 

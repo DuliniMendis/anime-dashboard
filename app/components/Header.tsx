@@ -12,6 +12,7 @@ import {
   HStack,
   Stack,
   Text,
+  MenuDivider,
 } from '@chakra-ui/react'
 import Image from 'next/image'
 import { logOut } from '../lib/actions'
@@ -59,10 +60,11 @@ export const Header = () => {
                 <Link href='/edit'>
                   <MenuItem>Edit details</MenuItem>
                 </Link>
-                <MenuItem onClick={handleLogOut}>Log out</MenuItem>
                 <Link href='/about'>
                   <MenuItem>Behind the scenes</MenuItem>
                 </Link>
+                <MenuDivider borderColor='purple.500' />
+                <MenuItem onClick={handleLogOut}>Log out</MenuItem>
               </MenuList>
             </Menu>
           </HStack>

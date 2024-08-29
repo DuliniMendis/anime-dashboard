@@ -28,6 +28,7 @@ export const List = ({
     if (totalPages) {
       updatePagination(totalPages)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalPages])
 
   return (
