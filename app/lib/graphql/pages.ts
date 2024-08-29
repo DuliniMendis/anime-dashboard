@@ -9,10 +9,8 @@ const MediaFragment = gql`
     coverImage {
       medium
     }
-    type
     genres
     averageScore
-    popularity
   }
 `
 
@@ -25,10 +23,6 @@ export const getPage = gql`
     Page(page: $page, perPage: $perPage) {
       pageInfo {
         total
-        perPage
-        currentPage
-        lastPage
-        hasNextPage
       }
       media(sort: $sort) {
         ...BasicMediaInfo
@@ -43,32 +37,10 @@ export const getMedia = gql`
     Media(id: $id) {
       ...BasicMediaInfo
       bannerImage
-      startDate {
-        year
-        month
-        day
-      }
-      endDate {
-        year
-        month
-        day
-      }
-      season
       seasonYear
       description
-      format
       episodes
       duration
-      isAdult
-      studios(isMain: true) {
-        edges {
-          isMain
-          node {
-            id
-            name
-          }
-        }
-      }
     }
   }
   ${MediaFragment}

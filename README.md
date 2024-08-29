@@ -1,6 +1,6 @@
 # AniRealm
 
-This is a simple list and details pages app made with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) using [Next.js](https://nextjs.org/) version 14.
+This is a simple list and details pages app made with [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) using [Next.js](https://nextjs.org/) version 14.
 
 ## Getting Started
 
@@ -70,14 +70,15 @@ I've been using NextJS 13 with the pages router and client-side pages in my curr
 - I used `next-auth` to block routes until users logged in using a middleware pattern.
 - I also added a `Postgres` database that stores the user data. 
 - I had trouble getting access to the next-auth session from the client side so I had to store the user session with user data in a cookie using `cookies-next`.
-- This meant that I had to do next-auth login/logouts as well as store/clear the cookie, which isn't ideal since the two actions can go out of sync.
-- Ideally I would tinker a bit more with next-auth to get the session returned from it.
+- This meant that I had to do `next-auth` login/logouts as well as store/clear the cookie, which isn't ideal since the two actions can go out of sync.
+- Ideally I would tinker a bit more with `next-auth` to get the session returned from it.
 - The login and edit details forms show an error if you try to use a username that is already used with a jobTitle that doesn't match the existing username. Since this  is a made-up scenario and users won't be using usernames and job titles to log in, I thought it was fine to show this error. I wouldn't do this if passwords were involved since you can find passwords of other users with this security loophole.
 
 ### **Testing**
 
 - I configured `jest` and `React Testing Library` and wrote a few unit tests. Obviously they are just examples and not comprehensive at all.
 - There are no E2E tests but that would be something I'd have in a typical CI/CD pipeline.
+- I would've used `faker-js` for mocking values for tests but I didn't do it in this app since it might be overkill.
 
 ### **Formatting**
 

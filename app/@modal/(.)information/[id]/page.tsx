@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { ModalDetails } from '../../../components/ModalDetails'
-import AnimeDetails from '@/app/components/Details'
-import DetailsFallback from '../../../components/DetailsFallback'
+import { Details } from '@/app/components/Details'
+import { DetailsFallback } from '../../../components/DetailsFallback'
 import { Container } from '@chakra-ui/react'
 
 export default function InterceptedRoute({
@@ -13,7 +13,7 @@ export default function InterceptedRoute({
     <ModalDetails>
       <Container mt={10}>
         <Suspense fallback={<DetailsFallback />}>
-          <AnimeDetails id={params.id} />
+          <Details id={params.id} />
         </Suspense>
       </Container>
     </ModalDetails>

@@ -1,5 +1,5 @@
 import { Container, Heading, Stack } from '@chakra-ui/react'
-import { AnimeList } from '../components/ListWithPagination'
+import { ListWithPagination } from '../components/ListWithPagination'
 
 export default function Information() {
   return (
@@ -14,7 +14,7 @@ export default function Information() {
         >
           Take a peek at the most popular anime shows of the season
         </Heading>
-        <AnimeList />
+        <ListWithPagination />
       </Stack>
     </Container>
   )

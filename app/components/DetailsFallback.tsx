@@ -7,7 +7,7 @@ import {
   Skeleton,
 } from '@chakra-ui/react'
 
-export default function DetailsFallback() {
+export const DetailsFallback = () => {
   return (
     <>
       <Flex alignItems='center' justifyContent='center' mt='3rem'>

@@ -17,7 +17,7 @@ export const List = ({
   currentPage: number
   updatePagination: (totalPages: number) => void
 }) => {
-  const { data } = useSuspenseQuery<GetPageQuery>(getPage, {
+  const { data, error } = useSuspenseQuery<GetPageQuery>(getPage, {
     variables: { page: currentPage, perPage: ITEMS_PER_PAGE },
     fetchPolicy: 'cache-and-network',
   })

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { Button, HStack, Text, Stack } from '@chakra-ui/react'
 
-const Pagination = ({
+export const Pagination = ({
   currentPage,
   totalPages,
   itemsPerPage,
@@ -85,5 +85,3 @@ const Pagination = ({
     </Stack>
   )
 }
-
-export default Pagination
