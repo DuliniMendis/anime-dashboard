@@ -1,10 +1,10 @@
 import NextAuth from 'next-auth'
-import { authConfig } from '../../auth.config'
+import { authConfig } from './auth.config'
 import Credentials from 'next-auth/providers/credentials'
 import { sql } from '@vercel/postgres'
-import { User, UserDBRecord } from './types'
+import { User, UserDBRecord } from './app/lib/types'
 
-const getUser = async (
+export const getOrInsertUser = async (
   username: string,
   jobTitle: string,
 ): Promise<User | undefined> => {
@@ -31,14 +31,18 @@ const getUser = async (
   }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const {
+  auth,
+  signIn,
+  signOut,
+  handlers: { GET, POST },
+} = NextAuth({
   ...authConfig,
   providers: [
     Credentials({
       async authorize(credentials) {
-        console.log({ credentials })
         const { username, jobTitle } = credentials as User
-        const user = await getUser(username, jobTitle)
+        const user = await getOrInsertUser(username, jobTitle)
         return user || null
       },
     }),

@@ -11,9 +11,9 @@ import {
   Stack,
   HStack,
 } from '@chakra-ui/react'
-import { useUserContext } from '../../lib/context/userContext'
 import { editDetails } from '../../lib/actions'
 import { useRouter } from 'next/navigation'
+import { useUserContext } from '@/app/lib/providers/UserContextProvider'
 
 export const EditDetailsForm = () => {
   const { user, setUser } = useUserContext()
@@ -25,8 +25,8 @@ export const EditDetailsForm = () => {
       const username = formData.get('username') as string
       const jobTitle = formData.get('jobTitle') as string
       await editDetails(user?.username, username, jobTitle)
-      setUser({ username, jobTitle })
-      router.replace('/')
+      setUser({ ...user, username, jobTitle })
+      handleOnClose()
     }
   }
 

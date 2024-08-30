@@ -6,7 +6,6 @@ import {
   Link,
   Button,
   Flex,
-  Box,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import Image from 'next/image'
@@ -45,6 +44,7 @@ export default function Home() {
           right={{ base: 'auto', md: 0 }}
           justifyContent={{ base: 'center', md: 'flex-end' }}
           width={{ base: '100%', md: 'auto' }}
+          zIndex={-1}
         >
           <Image
             src='/coverimg.png'

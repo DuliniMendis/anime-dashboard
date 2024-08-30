@@ -3,29 +3,31 @@
 import {
   Flex,
   Heading,
-  Menu,
-  MenuButton,
-  Avatar,
-  MenuList,
-  MenuItem,
   Box,
   HStack,
+  Avatar,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
   Stack,
   Text,
-  MenuDivider,
 } from '@chakra-ui/react'
 import Image from 'next/image'
-import { logOut } from '../lib/actions'
-import { useUserContext } from '../lib/context/userContext'
+
 import Link from 'next/link'
+
 import { colors } from '../styles/colors'
+import { logOut } from '../lib/actions'
+import { useUserContext } from '../lib/providers/UserContextProvider'
 
 export const Header = () => {
-  const { user, setUser } = useUserContext()
+  const { user } = useUserContext()
 
   const handleLogOut = async () => {
-    setUser(undefined)
     await logOut()
+    location.reload()
   }
 
   return (
@@ -39,18 +41,18 @@ export const Header = () => {
             </Heading>
           </HStack>
         </Link>
-        {/* Avatar with Dropdown only shown after login */}
-        {!!user && (
+        {user && (
           <HStack spacing={{ base: 3, md: 7 }}>
             <Stack spacing={0} textAlign='right'>
-              <Heading size='sm'>{user?.username}</Heading>
-              <Text size='sm'>{user?.jobTitle}</Text>
+              <Heading size='sm'>{user.username}</Heading>
+              <Text size='sm'>{user.jobTitle}</Text>
             </Stack>
+
             <Menu>
               <MenuButton rounded='full'>
                 <Avatar
                   size='md'
-                  name={user?.username}
+                  name={user.username}
                   bgColor={colors.light}
                   color={colors.mid}
                   fontWeight={600}

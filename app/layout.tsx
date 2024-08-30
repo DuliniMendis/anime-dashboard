@@ -3,7 +3,8 @@ import { ThemeProvider } from './lib/providers/ThemeProvider'
 import { ApolloProvider } from './lib/providers/ApolloProvider'
 import { Header } from './components/Header'
 import { Flex } from '@chakra-ui/react'
-import { UserContextProvider } from '@/app/lib/providers/UserContextProvider'
+import { SessionProvider } from 'next-auth/react'
+import { UserContextProvider } from './lib/providers/UserContextProvider'
 
 export const metadata: Metadata = {
   title: 'AniRealm',
@@ -22,15 +23,18 @@ export default function RootLayout({
       <body>
         <ApolloProvider>
           <ThemeProvider>
-            <UserContextProvider>
-              <Flex direction='column' height='100vh'>
-                <Header />
-                <Flex direction='column' flex='1' overflowY='auto' as='main'>
-                  {children}
+            <SessionProvider>
+              <UserContextProvider>
+                <Flex direction='column' height='100vh'>
+                  <Header />
+                  <Flex direction='column' flex='1' overflowY='auto' as='main'>
+                    {children}
+                  </Flex>
                 </Flex>
-              </Flex>
-              {modal}
-            </UserContextProvider>
+
+                {modal}
+              </UserContextProvider>
+            </SessionProvider>
           </ThemeProvider>
         </ApolloProvider>
       </body>

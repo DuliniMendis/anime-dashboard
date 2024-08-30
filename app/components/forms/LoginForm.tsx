@@ -11,13 +11,10 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react'
 import { logIn, doesUsernameAndJobTitleMatch } from '@/app/lib/actions'
-import { useContext, useEffect, useMemo, useState } from 'react'
-import { UserContext } from '@/app/lib/context/userContext'
+import { useEffect, useMemo, useState } from 'react'
 import { debounce } from 'lodash'
 
 export const LoginForm = () => {
-  const userContext = useContext(UserContext)
-
   const [username, setUsername] = useState('')
   const [jobTitle, setJobTitle] = useState('')
   const [mismatchError, setMismatchError] = useState('')
@@ -50,7 +47,7 @@ export const LoginForm = () => {
 
   const handleLogin = async () => {
     await logIn({ username, jobTitle })
-    userContext?.setUser({ username, jobTitle })
+    location.reload()
   }
 
   return (
