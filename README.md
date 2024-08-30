@@ -54,7 +54,7 @@ I've been using NextJS 13 with the pages router and client-side pages in my curr
 
 ### **Forms**
 
-- The forms don't have loading states and error messages coming back from the server. If I had more time, I would've added those.
+- The forms don't have error messages coming back from the server if the form action failed. If I had more time, I would've added those.
 
 ### **Modal and interception**
 
@@ -69,9 +69,10 @@ I've been using NextJS 13 with the pages router and client-side pages in my curr
 
 - I used `next-auth` to block routes until users logged in using a middleware pattern.
 - I also added a `Postgres` database that stores the user data. 
-- I had trouble getting access to the next-auth session from the client side so I had to store the user session with user data in a cookie using `cookies-next`.
-- This meant that I had to do `next-auth` login/logouts as well as store/clear the cookie, which isn't ideal since the two actions can go out of sync.
-- Ideally I would tinker a bit more with `next-auth` to get the session returned from it.
+- 'Next-auth' was so confusing to setup but I think I got it working.
+- When you log in, a session is created with the `userId` saved in the session. 
+- A `UserContext` reads the `userId` from the session and fetches the full user from the DB using server actions. 
+- When user details are edited, the `UserContext` is updated as well.
 - The login and edit details forms show an error if you try to use a username that is already used with a jobTitle that doesn't match the existing username. Since this  is a made-up scenario and users won't be using usernames and job titles to log in, I thought it was fine to show this error. I wouldn't do this if passwords were involved since you can find passwords of other users with this security loophole.
 
 ### **Testing**

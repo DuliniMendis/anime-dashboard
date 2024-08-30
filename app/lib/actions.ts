@@ -64,3 +64,10 @@ export const doesUsernameAndJobTitleMatch = async (
 
   return users.rows.length === 0 || users.rows[0].job_title === jobTitle
 }
+
+export const doesUsernameExist = async (username: string) => {
+  const users =
+    await sql<UserDBRecord>`SELECT id FROM anime_users WHERE username=${username}`
+
+  return users.rows.length > 0
+}

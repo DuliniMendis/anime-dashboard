@@ -13,6 +13,7 @@ import {
 import { logIn, doesUsernameAndJobTitleMatch } from '@/app/lib/actions'
 import { useEffect, useMemo, useState } from 'react'
 import { debounce } from 'lodash'
+import { FormPendingSpinner } from '../LoadingSpinner'
 
 export const LoginForm = () => {
   const [username, setUsername] = useState('')
@@ -50,6 +51,8 @@ export const LoginForm = () => {
     location.reload()
   }
 
+  const isLoginDisabled = !username || !jobTitle || !!mismatchError
+
   return (
     <form action={handleLogin}>
       <Stack spacing={10}>
@@ -83,10 +86,11 @@ export const LoginForm = () => {
             onChange={(e) => setJobTitle(e.target.value)}
           />
         </FormControl>
-        <Button colorScheme='purple' type='submit'>
+        <Button colorScheme='purple' type='submit' isDisabled={isLoginDisabled}>
           Log in
         </Button>
       </Stack>
+      <FormPendingSpinner />
     </form>
   )
 }
