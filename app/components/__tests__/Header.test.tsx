@@ -5,7 +5,7 @@ jest.mock('../../lib/actions', () => ({
   logOut: jest.fn(),
 }))
 jest.mock('next/navigation')
-jest.mock('../../lib/context/userContext', () => ({
+jest.mock('../../lib/providers/UserContextProvider', () => ({
   useUserContext: jest.fn().mockReturnValue({
     user: {
       username: 'animefan',
