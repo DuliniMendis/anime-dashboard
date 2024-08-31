@@ -2,7 +2,16 @@
 
 This is a simple list and details pages app made with [create-next-app](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) using [Next.js](https://nextjs.org/) version 14.
 
+I learnt a bunch of new NextJs features while doing this so I'm happy about the time I spent on it. It was definitely more than 2 hours 😀.
+
+ChatGPT helped a bit too. I'd be alarmed if someone doesn't use it for dev work these days. 
+
 ## Getting Started
+
+The setup is a tiny bit complicated than it needs to be, just because I used a database. You can use my database if you have the secrets that I have sent you. Otherwise, you will need a simple database with a table called `anime_users` with 3 columns:
+1. An `id` column which is the primary key
+2. A `username` column which is unique, text and not null
+3. A `job_title` column which is also text and not null
 
 - Clone the repository in you local environment. 
 - You might need to change you node version to v20.16.0. You can use [nvm](https://github.com/nvm-sh/nvm) to keep multiple node versions and switch between them.
@@ -50,11 +59,14 @@ I've been using NextJS 13 with the pages router and client-side pages in my curr
 ### **GraphQL**
 
 - I setup `graphql-codegen` to generate types with the co-location plugin to prevent types from the two queries I was using from conflicting with each other.
-- Ideally I would also make a factory generator that generates mock data for each query so they can be used in testing.
 
 ### **Forms**
 
 - The forms don't have error messages coming back from the server if the form action failed. If I had more time, I would've added those.
+
+### **Loading States**
+
+- I added skeleton loading states and spinner to some parts of the app but there are more places that can benefit from them like the Logout, the Avatar and the username check on the Login and Edit Details forms.
 
 ### **Modal and interception**
 
@@ -78,7 +90,7 @@ I've been using NextJS 13 with the pages router and client-side pages in my curr
 ### **Testing**
 
 - I configured `jest` and `React Testing Library` and wrote a few unit tests. Obviously they are just examples and not comprehensive at all.
-- There are no E2E tests but that would be something I'd have in a typical CI/CD pipeline.
+- There are no E2E tests but that would be something I'd have in a typical CI/CD pipeline. Linting and formatting checks would also go in that pipeline if one existed.
 - I would've used `faker-js` for mocking values for tests but I didn't do it in this app since it might be overkill.
 
 ### **Formatting**

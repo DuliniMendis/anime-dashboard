@@ -34,8 +34,16 @@ export default function About() {
           </Link>{' '}
           version 14.
         </Text>
+        <Text>
+          I learnt a bunch of new NextJs features while doing this so I am happy
+          about the time I spent on it. It was definitely more than 2 hours.
+        </Text>
+        <Text>
+          ChatGPT helped a bit too. I would be alarmed if someone does not use
+          it for dev work these days.
+        </Text>
 
-        <Heading as='h2' size='md' mb={2}>
+        <Heading as='h2' size='md' my={2}>
           See the code
         </Heading>
 
@@ -131,8 +139,8 @@ export default function About() {
             session and fetches the full user from the DB using server actions.
           </ListItem>
           <ListItem>
-            When user details are edited, the <ListItem>UserContext</ListItem>{' '}
-            is updated as well.
+            When user details are edited, the <Code>UserContext</Code> is
+            updated as well.
           </ListItem>
           <ListItem>
             The login and edit details forms show an error if you try to use a
