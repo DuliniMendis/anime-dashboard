@@ -30,9 +30,7 @@ export const EditDetailsForm = () => {
 
   // Check if username belongs to another user
   const checkIfUsernameExists = async (username: string) => {
-    console.log('Checking if username exists', username)
     const usernameExists = await doesUsernameExist(username)
-    console.log('Username exists', usernameExists)
     if (usernameExists) {
       setUsernameError('This username is already in use.')
     } else {

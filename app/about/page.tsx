@@ -119,18 +119,20 @@ export default function About() {
             data.
           </ListItem>
           <ListItem>
-            I had trouble getting access to the <Code>next-auth</Code> session
-            from the client side, so I had to store the user session with user
-            data in a cookie using <Code>cookies-next</Code>.
+            <Code>Next-auth</Code> was so confusing to setup but I think I got
+            it working.
           </ListItem>
           <ListItem>
-            This meant that I had to do <Code>next-auth</Code> login/logouts as
-            well as store/clear the cookie, which is not ideal since the two
-            actions can go out of sync.
+            When you log in, a session is created with the <Code>userId</Code>{' '}
+            saved in the session.
           </ListItem>
           <ListItem>
-            Ideally, I would tinker a bit more with <Code>next-auth</Code> to
-            get the session returned from it.
+            A <Code>UserContext</Code> reads the <Code>userId</Code> from the
+            session and fetches the full user from the DB using server actions.
+          </ListItem>
+          <ListItem>
+            When user details are edited, the <ListItem>UserContext</ListItem>{' '}
+            is updated as well.
           </ListItem>
           <ListItem>
             The login and edit details forms show an error if you try to use a
