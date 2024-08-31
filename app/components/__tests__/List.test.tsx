@@ -3,6 +3,13 @@ import { ListWithPagination } from '../ListWithPagination'
 import { MockedProvider } from '@apollo/client/testing'
 import { getPage } from '@/app/lib/graphql/pages'
 
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({ push: jest.fn() }),
+  useSearchParams: () => {
+    return { get: jest.fn().mockReturnValue('1') }
+  },
+}))
+
 describe('List Component', () => {
   const mocks = [
     {

@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react'
-import { ModalDetails } from '../../../components/ModalDetails'
-import { Details } from '@/app/components/Details'
-import { DetailsFallback } from '../../../components/DetailsFallback'
 import { Container } from '@chakra-ui/react'
+import { DetailsFallback } from '@/app/components/DetailsFallback'
+import { ModalDetails } from '@/app/components/ModalDetails'
+import { Details } from '@/app/components/Details'
 
 export default function InterceptedRoute({
   params,

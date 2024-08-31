@@ -1,3 +1,4 @@
+import React from 'react'
 import { Container, Heading, Stack } from '@chakra-ui/react'
 import { ListWithPagination } from '../components/ListWithPagination'
 

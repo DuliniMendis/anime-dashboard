@@ -5,13 +5,19 @@ import { Pagination } from './Pagination'
 import { List } from './List'
 import { AnimeListFallback } from './ListFallback'
 import { ITEMS_PER_PAGE, NUM_PAGEES_TO_SHOW } from '../lib/constants'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export const ListWithPagination = () => {
-  const [currentPage, setCurrentPage] = useState(1)
+  const searchParams = useSearchParams()
+  const page = searchParams.get('page')
+
+  const [currentPage, setCurrentPage] = useState(page ? Number(page) : 1)
   const [totalPages, setTotalPages] = useState<number>(10)
 
+  const router = useRouter()
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
+    router.push(`/information?page=${page}`)
   }
 
   return (

@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 const MediaFragment = gql`
-  fragment BasicMediaInfo on Media {
+  fragment SharedMediaInfo on Media {
     id
     title {
       english
@@ -25,7 +25,7 @@ export const getPage = gql`
         total
       }
       media(sort: $sort) {
-        ...BasicMediaInfo
+        ...SharedMediaInfo
       }
     }
   }
@@ -35,7 +35,7 @@ export const getPage = gql`
 export const getMedia = gql`
   query getMedia($id: Int!) {
     Media(id: $id) {
-      ...BasicMediaInfo
+      ...SharedMediaInfo
       bannerImage
       seasonYear
       description

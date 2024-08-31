@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation'
 import { useUserContext } from '@/app/lib/providers/UserContextProvider'
 import { useEffect, useMemo, useState } from 'react'
 import { debounce } from 'lodash'
-import { FormPendingSpinner, LoadingSpinner } from '../LoadingSpinner'
+import { FormPendingSpinner } from '../LoadingSpinner'
 
 export const EditDetailsForm = () => {
   const { user, setUser } = useUserContext()

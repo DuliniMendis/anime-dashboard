@@ -8,9 +8,9 @@ import {
   Text,
 } from '@chakra-ui/react'
 import Image from 'next/image'
-import { BasicMediaInfoFragment } from '../lib/graphql/pages.generated'
+import { SharedMediaInfoFragment } from '../lib/graphql/pages.generated'
 
-export const AnimeCard = ({ media }: { media: BasicMediaInfoFragment }) => {
+export const AnimeCard = ({ media }: { media: SharedMediaInfoFragment }) => {
   return (
     <Card width={350} height={180} key={media?.id}>
       <CardBody>
