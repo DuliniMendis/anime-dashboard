@@ -14,6 +14,7 @@ import { logIn, doesUsernameAndJobTitleMatch } from '@/app/lib/actions'
 import { useEffect, useMemo, useState } from 'react'
 import { debounce } from 'lodash'
 import { FormPendingSpinner } from '../LoadingSpinner'
+import { colors } from '@/app/styles/colors'
 
 export const LoginForm = () => {
   // Keeping individual fields in state since a username check is done as the user types
@@ -58,7 +59,8 @@ export const LoginForm = () => {
 
   return (
     <form action={handleLogin}>
-      <Stack spacing={10}>
+      {/* Defining color here to prevent the global white font from showing up initially */}
+      <Stack spacing={10} color={colors.midDark}>
         <Heading as='h1' size='xl' textAlign='center'>
           Welcome to AniRealm
         </Heading>
