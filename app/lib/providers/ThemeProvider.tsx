@@ -6,6 +6,7 @@ import { cardAnatomy, menuAnatomy, modalAnatomy } from '@chakra-ui/anatomy'
 import { colors } from '@/app/styles/colors'
 import { fonts } from '@/app/styles/fonts'
 
+// Overwrite some default styles for card, menu, and modal components
 const cardStyle = createMultiStyleConfigHelpers(cardAnatomy.keys)
 const cardBaseStyle = cardStyle.definePartsStyle({
   container: {

@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth'
 import { authConfig } from './auth.config'
 
+// To restrict access to all pages until logged in
 export default NextAuth(authConfig).auth
 
 export const config = {

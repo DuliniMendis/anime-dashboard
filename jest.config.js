@@ -1,15 +1,3 @@
-// /** @type {import('ts-jest').JestConfigWithTsJest} **/
-// module.exports = {
-//   testEnvironment: 'node',
-//   transform: {
-//     '^.+\\.tsx?$': 'ts-jest',
-//   },
-//   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
-//   moduleDirectories: ['node_modules'],
-//   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
-//   testTimeout: 60000,
-// }
-
 const nextJest = require('next/jest')
 const { pathsToModuleNameMapper } = require('ts-jest')
 const { compilerOptions } = require('./tsconfig')

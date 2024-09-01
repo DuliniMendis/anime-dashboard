@@ -1,6 +1,30 @@
 import React, { useMemo } from 'react'
 import { Button, HStack, Text, Stack } from '@chakra-ui/react'
 
+/**
+ * The `Pagination` component provides a set of controls to navigate through multiple pages of items.
+ *
+ * This component renders pagination buttons that allow users to navigate between pages,
+ * as well as display information about the current page range and total items.
+ *
+ * @param {number} props.currentPage - The current active page number.
+ * @param {number} props.totalPages - The total number of pages available.
+ * @param {number} props.itemsPerPage - The number of items displayed per page.
+ * @param {number} props.nPagesToShow - The number of page buttons to show at once in the pagination controls.
+ * @param {(page: number) => void} props.onPageChange - A callback function that is called when the user changes the page.
+ *
+ * @example
+ * // Example usage of Pagination with 10 pages and 20 items per page
+ * return (
+ *   <Pagination
+ *     currentPage={3}
+ *     totalPages={10}
+ *     itemsPerPage={20}
+ *     nPagesToShow={5}
+ *     onPageChange={(page) => console.log(`Changed to page ${page}`)}
+ *   />
+ * );
+ */
 export const Pagination = ({
   currentPage,
   totalPages,
@@ -45,15 +69,12 @@ export const Pagination = ({
     }
   }, [currentPage, nPagesToShow, totalPages, itemsPerPage])
 
-  const handleNextPage = () => onPageChange(currentPage + 1)
-
-  const handlePrevPage = () => onPageChange(currentPage - 1)
-
   return (
     <Stack spacing={5} mt={8}>
       <HStack spacing={{ base: 2, md: 4 }} justify='center'>
         <Button
-          onClick={handlePrevPage}
+          // If performance is a concern these inline functions can be pulled out and memoized
+          onClick={() => onPageChange(currentPage - 1)}
           isDisabled={currentPage === 1}
           colorScheme='purple'
           size={{ base: 'sm', md: 'md' }}
@@ -73,7 +94,7 @@ export const Pagination = ({
         ))}
 
         <Button
-          onClick={handleNextPage}
+          onClick={() => onPageChange(currentPage + 1)}
           isDisabled={currentPage === totalPages}
           colorScheme='purple'
           size={{ base: 'sm', md: 'md' }}

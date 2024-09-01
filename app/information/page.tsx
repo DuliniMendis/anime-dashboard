@@ -2,6 +2,8 @@ import React from 'react'
 import { Container, Heading, Stack } from '@chakra-ui/react'
 import { ListWithPagination } from '../components/ListWithPagination'
 
+// Pages are split into their static component (ex: this page) and their dynamic components (ex: <ListWithPagination />)
+// depending on whether they have data fetching and client features like hooks and events.
 export default function Information() {
   return (
     <Container maxW='1200px' py={20} px={0}>

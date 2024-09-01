@@ -23,12 +23,14 @@ export const authConfig = {
       // If in login page and not logged in --> Keep them in the login page
       return true
     },
+    // store the user id in the token
     async jwt({ token, user }) {
       if (user) {
         token.userId = user.id
       }
       return token
     },
+    // then get the userId from the token and pass it on to the session
     session({ token, session }) {
       if (token.userId) {
         return {

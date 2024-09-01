@@ -16,6 +16,7 @@ import { debounce } from 'lodash'
 import { FormPendingSpinner } from '../LoadingSpinner'
 
 export const LoginForm = () => {
+  // Keeping individual fields in state since a username check is done as the user types
   const [username, setUsername] = useState('')
   const [jobTitle, setJobTitle] = useState('')
   const [mismatchError, setMismatchError] = useState('')
@@ -36,7 +37,7 @@ export const LoginForm = () => {
   }
 
   const debouncedCheckIfUsernameExists = useMemo(
-    () => debounce(checkIfUsernameExists, 500),
+    () => debounce(checkIfUsernameExists, 300),
     [],
   )
 
@@ -46,6 +47,8 @@ export const LoginForm = () => {
     }
   }, [username, jobTitle, debouncedCheckIfUsernameExists])
 
+  // Using a custom form action instead of using useActionState
+  // to have bother client and server side actions triggered through this.
   const handleLogin = async () => {
     await logIn({ username, jobTitle })
     location.reload()

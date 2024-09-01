@@ -63,6 +63,7 @@ I've been using NextJS 13 with the pages router and client-side pages in my curr
 ### **Forms**
 
 - The forms don't have error messages coming back from the server if the form action failed. If I had more time, I would've added those.
+- Once the edit details form action is successful, it would've been nice if there was some sort of success message like a toast, which isn't there right now. 
 
 ### **Loading States**
 

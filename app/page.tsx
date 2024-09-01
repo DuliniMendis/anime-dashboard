@@ -10,6 +10,8 @@ import {
 import NextLink from 'next/link'
 import Image from 'next/image'
 
+// The landing page of the application. This has some basic welcome text and not the anime list
+// since it was specifically mentioned that the anime list needs to be a page called 'information'.
 export default function Home() {
   return (
     <Container maxW='1200px' padding='5rem 0'>

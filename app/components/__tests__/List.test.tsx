@@ -11,6 +11,7 @@ jest.mock('next/navigation', () => ({
 }))
 
 describe('List Component', () => {
+  // 2 mocked queries for the 2 paginated pages
   const mocks = [
     {
       request: {
@@ -123,7 +124,7 @@ describe('List Component', () => {
     )
   })
 
-  it('a new page is rendered when next if clicked', async () => {
+  it('a new page is rendered when next is clicked', async () => {
     render(
       <MockedProvider mocks={mocks} addTypename={true}>
         <ListWithPagination />

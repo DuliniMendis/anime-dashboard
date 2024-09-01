@@ -22,11 +22,27 @@ import { colors } from '../styles/colors'
 import { logOut } from '../lib/actions'
 import { useUserContext } from '../lib/providers/UserContextProvider'
 
+/**
+ * The `Header` component displays the top navigation bar.
+ * It includes the application logo and title at all times.
+ *
+ * Features:
+ * - Displays the application logo and title.
+ * - Shows the authenticated user's name, job title, and avatar.
+ * - Provides a dropdown menu for editing user details, viewing additional information, and logging out.
+ *
+ * @example
+ * // Usage within the application layout
+ * return (
+ *   <Header />
+ * );
+ */
 export const Header = () => {
   const { user } = useUserContext()
 
   const handleLogOut = async () => {
     await logOut()
+    // The reloads are needed since Next-auth does not automatically refresh session state without it.
     location.reload()
   }
 
@@ -47,7 +63,7 @@ export const Header = () => {
               <Heading size='sm'>{user.username}</Heading>
               <Text size='sm'>{user.jobTitle}</Text>
             </Stack>
-
+            {/* Avatar and menu */}
             <Menu>
               <MenuButton rounded='full'>
                 <Avatar

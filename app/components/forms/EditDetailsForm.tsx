@@ -22,6 +22,7 @@ import { FormPendingSpinner } from '../LoadingSpinner'
 export const EditDetailsForm = () => {
   const { user, setUser } = useUserContext()
 
+  // Keeping individual fields in state since a username check is done as the user types
   const [username, setUsername] = useState(user?.username || '')
   const [jobTitle, setJobTitle] = useState(user?.jobTitle || '')
   const [usernameError, setUsernameError] = useState('')
@@ -39,7 +40,7 @@ export const EditDetailsForm = () => {
   }
 
   const debouncedCheckIfUsernameExists = useMemo(
-    () => debounce(checkIfUsernameExists, 500),
+    () => debounce(checkIfUsernameExists, 300),
     [],
   )
 
@@ -49,6 +50,8 @@ export const EditDetailsForm = () => {
     }
   }, [username, user, debouncedCheckIfUsernameExists])
 
+  // Using a custom form action instead of using useActionState
+  // to have bother client and server side actions triggered through this.
   const handleEditDetails = async () => {
     if (user) {
       await editDetails(user?.username, username, jobTitle)

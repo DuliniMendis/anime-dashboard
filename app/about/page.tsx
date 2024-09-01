@@ -13,7 +13,7 @@ import {
 export default function About() {
   return (
     <Flex justifyContent='center'>
-      <Stack py='5rem' maxW='800px' spacing='1rem'>
+      <Stack py='5rem' px='1rem' maxW='800px' spacing='1rem'>
         <Heading as='h1' size='xl' mb={4}>
           Behind the scenes
         </Heading>
@@ -38,8 +38,8 @@ export default function About() {
           about the time I spent on it. It was definitely more than 2 hours.
         </Text>
         <Text>
-          ChatGPT helped a bit too. I would be alarmed if someone does not use
-          it for dev work these days.
+          ChatGPT helped too. I would be alarmed if someone does not use it for
+          dev work these days.
         </Text>
 
         <Heading as='h2' size='md' my={2}>
@@ -84,6 +84,11 @@ export default function About() {
           <ListItem>
             The forms do not have loading states and error messages coming back
             from the server. If I had more time, I would have added those.
+          </ListItem>
+          <ListItem>
+            Once the edit details form action is successful, it would have been
+            nice if there was some sort of success message like a toast, which
+            is not there right now.
           </ListItem>
         </UnorderedList>
 

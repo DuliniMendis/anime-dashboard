@@ -31,7 +31,6 @@ export default function RootLayout({
                     {children}
                   </Flex>
                 </Flex>
-
                 {modal}
               </UserContextProvider>
             </SessionProvider>

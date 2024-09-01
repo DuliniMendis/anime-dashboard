@@ -7,6 +7,18 @@ import { AnimeListFallback } from './ListFallback'
 import { ITEMS_PER_PAGE, NUM_PAGEES_TO_SHOW } from '../lib/constants'
 import { useRouter, useSearchParams } from 'next/navigation'
 
+/**
+ * The `ListWithPagination` component provides a paginated list of items.
+ *
+ * The component uses URL query parameters to determine the current page,
+ * ensuring that the pagination state is preserved across page reloads and navigation.
+ *
+ * The list content is fetched and displayed using a suspense fallback to handle loading states gracefully.
+ *
+ * @example
+ * // Usage of the ListWithPagination component in a page to display paginated anime content
+ * return <ListWithPagination />;
+ */
 export const ListWithPagination = () => {
   const searchParams = useSearchParams()
   const page = searchParams.get('page')

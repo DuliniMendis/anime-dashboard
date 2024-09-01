@@ -1,5 +1,6 @@
 import { GetMediaQuery } from '../graphql/pages.generated'
 
+// Mappers for the Details component
 export const mapDetailsDataToView = (data: GetMediaQuery) => {
   if (!data?.Media) {
     return null
@@ -9,8 +10,8 @@ export const mapDetailsDataToView = (data: GetMediaQuery) => {
     data.Media
 
   return {
-    bannerImage,
-    title: title?.english,
+    bannerImage: bannerImage || '',
+    title: title?.english || '',
     seasonYear,
     description: description
       ?.replace(/<\/?i>/, '') // description has html tags so removing the common ones

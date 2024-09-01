@@ -5,6 +5,7 @@ import { AuthError } from 'next-auth'
 import { User, UserDBRecord } from './types'
 import { signIn, signOut } from '../../auth'
 
+// These are all the server actions that are called from the client.
 export const logIn = async (user: User) => {
   try {
     await signIn('credentials', user)
@@ -27,10 +28,9 @@ export const editDetails = async (
 ) => {
   try {
     if (prevUserName !== username) {
-      const users =
-        await sql<UserDBRecord>`UPDATE username, job_title FROM anime_users WHERE username=${username}`
+      const usernameExists = await doesUsernameExist(username)
 
-      if (users.rows.length) {
+      if (usernameExists) {
         throw new Error('Username already exists.')
       }
     }

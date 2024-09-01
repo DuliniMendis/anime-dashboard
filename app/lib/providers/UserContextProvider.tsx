@@ -10,6 +10,8 @@ type UserContextType = {
   setUser: React.Dispatch<React.SetStateAction<User | undefined>>
 }
 
+// Context and provider to store of user data once it's fetched from the server
+// and share with other components.
 export const UserContext = createContext<UserContextType>({
   user: undefined,
   setUser: () => {},
@@ -29,10 +31,11 @@ export const UserContextProvider = ({
   const { data: session } = useSession()
 
   const fetchUser = async (id: string) => {
-    const user = await getUser(id)
+    const user = await getUser(id) // fetch from the server
     setUser(user)
   }
 
+  // User is fetched from the server when the session changes between authenticated and unauthenticated states
   useEffect(() => {
     if (session?.user?.id) {
       fetchUser(session.user.id)

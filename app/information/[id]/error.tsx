@@ -4,7 +4,8 @@ import React from 'react'
 import { Button, Heading, Text, Stack, Flex } from '@chakra-ui/react'
 import Link from 'next/link'
 
-export default function NotFound() {
+// Error page for when the requested anime is not found or some other error occurs
+export default function Error() {
   return (
     <Flex
       width='100%'

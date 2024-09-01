@@ -7,9 +7,24 @@ import Link from 'next/link'
 import { AnimeCard } from './Card'
 import { GetPageQuery } from '../lib/graphql/pages.generated'
 import { useEffect } from 'react'
-import { mapPageDataToView } from '../lib/dataMappers/listMapper'
+import { mapPageDataToListView } from '../lib/dataMappers/listMapper'
 import { ITEMS_PER_PAGE } from '../lib/constants'
 
+/**
+ * The `List` component displays a paginated list of media items using a grid layout.
+ *
+ * This component relies on a suspense query to retrieve the media data for the specified page.
+ * The data is then mapped to a format suitable for displaying a list of media items.
+ *
+ * The component triggers a callback to update the pagination state when the total number of pages is determined.
+ *
+ * @example
+ * // Usage of the List component to display media items on the current page
+ * const handleUpdatePagination = (totalPages) => {
+ *   // Logic to handle pagination state
+ * }
+ * return <List currentPage={1} updatePagination={handleUpdatePagination} />;
+ */
 export const List = ({
   currentPage,
   updatePagination,
@@ -22,7 +37,7 @@ export const List = ({
     fetchPolicy: 'cache-and-network',
   })
 
-  const { items, totalPages } = mapPageDataToView(data)
+  const { items, totalPages } = mapPageDataToListView(data)
 
   useEffect(() => {
     if (totalPages) {
