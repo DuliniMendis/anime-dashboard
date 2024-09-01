@@ -65,9 +65,10 @@ I've been using NextJS 13 with the pages router and client-side pages in my curr
 - The forms don't have error messages coming back from the server if the form action failed. If I had more time, I would've added those.
 - Once the edit details form action is successful, it would've been nice if there was some sort of success message like a toast, which isn't there right now. 
 
-### **Loading States**
+### **Loading**
 
 - I added skeleton loading states and spinner to some parts of the app but there are more places that can benefit from them like the Logout, the Avatar and the username check on the Login and Edit Details forms.
+- There are some flickers and fonts/colors changing after a second or so. If I had time, I would've troubleshooted what was causing those.
 
 ### **Modal and interception**
 

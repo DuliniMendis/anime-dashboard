@@ -8,6 +8,7 @@ import {
   Code,
   Flex,
   Stack,
+  List,
 } from '@chakra-ui/react'
 
 export default function About() {
@@ -71,10 +72,6 @@ export default function About() {
             co-location plugin to prevent types from the two queries I was using
             from conflicting with each other.
           </ListItem>
-          <ListItem>
-            Ideally, I would also make a factory generator that generates mock
-            data for each query so they can be used in testing.
-          </ListItem>
         </UnorderedList>
 
         <Text mb={2}>
@@ -89,6 +86,23 @@ export default function About() {
             Once the edit details form action is successful, it would have been
             nice if there was some sort of success message like a toast, which
             is not there right now.
+          </ListItem>
+        </UnorderedList>
+
+        <Text mb={2}>
+          <strong>Loading</strong>
+        </Text>
+        <UnorderedList mb={4}>
+          <ListItem>
+            I added skeleton loading states and spinner to some parts of the app
+            but there are more places that can benefit from them like the
+            Logout, the Avatar and the username check on the Login and Edit
+            Details forms.
+          </ListItem>
+          <ListItem>
+            There are some flickers and fonts/colors changing after a second or
+            so. If I had time, I would have troubleshooted what was causing
+            those.
           </ListItem>
         </UnorderedList>
 
