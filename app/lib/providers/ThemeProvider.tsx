@@ -4,7 +4,7 @@ import { ChakraProvider, createMultiStyleConfigHelpers } from '@chakra-ui/react'
 import { extendTheme } from '@chakra-ui/react'
 import { cardAnatomy, menuAnatomy, modalAnatomy } from '@chakra-ui/anatomy'
 import { colors } from '@/app/styles/colors'
-import { fonts } from '@/app/styles/fonts'
+import { Quicksand, Fira_Sans } from 'next/font/google'
 
 // Overwrite some default styles for card, menu, and modal components
 const cardStyle = createMultiStyleConfigHelpers(cardAnatomy.keys)
@@ -56,10 +56,13 @@ const modalBaseStyle = modalStyle.definePartsStyle({
   },
 })
 
+const quicksand = Quicksand({ subsets: ['latin'] })
+const firaSans = Fira_Sans({ subsets: ['latin'], weight: ['300', '400'] })
+
 const theme = extendTheme({
   fonts: {
-    heading: 'var(--font-heading)',
-    body: 'var(--font-body)',
+    heading: firaSans.style.fontFamily,
+    body: quicksand.style.fontFamily,
   },
   colors: {
     purple: {
@@ -97,14 +100,6 @@ const theme = extendTheme({
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <style jsx global>
-        {`
-          :root {
-            --font-heading: ${fonts.heading.style.fontFamily};
-            --font-body: ${fonts.body.style.fontFamily};
-          }
-        `}
-      </style>
       <ChakraProvider theme={theme}>{children}</ChakraProvider>
     </>
   )
