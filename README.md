@@ -67,7 +67,7 @@ I've been using NextJS 13 with the pages router and client-side pages in my curr
 
 ### **Loading**
 
-- I added skeleton loading states and spinner to some parts of the app but there are more places that can benefit from them like the Logout, the Avatar and the username check on the Login and Edit Details forms.
+- I added skeleton loading states and spinners to some parts of the app but there are more places that can benefit from them like the Logout, the Avatar and the username check on the Login and Edit Details forms.
 - There are some flickers and fonts/colors changing after a second or so. If I had time, I would've troubleshooted what was causing those.
 
 ### **Modal and interception**

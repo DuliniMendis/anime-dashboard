@@ -94,8 +94,8 @@ export default function About() {
         </Text>
         <UnorderedList mb={4}>
           <ListItem>
-            I added skeleton loading states and spinner to some parts of the app
-            but there are more places that can benefit from them like the
+            I added skeleton loading states and spinners to some parts of the
+            app but there are more places that can benefit from them like the
             Logout, the Avatar and the username check on the Login and Edit
             Details forms.
           </ListItem>
