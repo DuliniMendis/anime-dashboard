@@ -4,8 +4,6 @@ export type User = {
   jobTitle: string
 }
 
-export type UserDBRecord = {
-  id: string
-  username: string
+export type UserDBRecord = Omit<User, 'jobTitle'> & {
   job_title: string
 }
