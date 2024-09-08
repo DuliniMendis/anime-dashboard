@@ -3,7 +3,7 @@
 import { sql } from '@vercel/postgres'
 import { AuthError } from 'next-auth'
 import { User, UserDBRecord } from './types'
-import { signIn, signOut } from '../../auth'
+import { signIn, signOut, auth } from '../../auth'
 
 // These are all the server actions that are called from the client.
 export const logIn = async (user: User) => {
@@ -21,11 +21,21 @@ export const logOut = async () => {
   await signOut()
 }
 
+const checkIfLoggedIn = async () => {
+  const session = await auth()
+
+  if (!session) {
+    throw new Error('Failed to fetch user.')
+  }
+}
+
 export const editDetails = async (
   prevUserName: string,
   username: string,
   jobTitle: string,
 ) => {
+  await checkIfLoggedIn()
+
   try {
     if (prevUserName !== username) {
       const usernameExists = await doesUsernameExist(username)
@@ -41,6 +51,8 @@ export const editDetails = async (
 }
 
 export const getUser = async (id: string) => {
+  await checkIfLoggedIn()
+
   const users =
     await sql<UserDBRecord>`SELECT * FROM anime_users WHERE id=${id}`
 
