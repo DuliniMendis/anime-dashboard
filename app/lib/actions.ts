@@ -56,7 +56,7 @@ export const getUser = async (id: string) => {
   const users =
     await sql<UserDBRecord>`SELECT * FROM anime_users WHERE id=${id}`
 
-  if (!users.rows.length) {
+  if (!users.rows[0]) {
     throw new Error('User not found.')
   }
 
@@ -74,7 +74,7 @@ export const doesUsernameAndJobTitleMatch = async (
   const users =
     await sql<UserDBRecord>`SELECT username, job_title FROM anime_users WHERE username=${username}`
 
-  return users.rows.length === 0 || users.rows[0].job_title === jobTitle
+  return users.rows.length === 0 || users.rows[0]?.job_title === jobTitle
 }
 
 export const doesUsernameExist = async (username: string) => {
