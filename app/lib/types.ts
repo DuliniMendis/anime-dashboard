@@ -4,6 +4,6 @@ export type User = {
   jobTitle: string
 }
 
-export type UserDBRecord = Omit<User, 'jobTitle'> & {
+export type UserDBRecord = Omit<Required<User>, 'jobTitle'> & {
   job_title: string
 }
