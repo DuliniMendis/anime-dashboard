@@ -4,7 +4,6 @@ import { useSuspenseQuery } from '@apollo/client'
 import {
   Container,
   Heading,
-  Box,
   Text,
   Image,
   Flex,
