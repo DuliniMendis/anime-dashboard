@@ -56,21 +56,19 @@ export const Details = ({ id }: { id: string }) => {
         />
       </Flex>
       <Container maxW='container.md' p='6'>
-        <Box>
-          <Heading as='h1' size='xl'>
-            {media.title}
-          </Heading>
-          <HStack justifyContent='space-between' mt='1rem'>
-            <SubInfo title='Year' value={media.seasonYear} />
-            <SubInfo title='Episodes' value={media.episodes} />
-            <SubInfo title='Duration' value={media.duration} />
-          </HStack>
-          {media.description?.map((line, index) => (
-            <Text mt='4' fontSize='sm' key={index}>
-              {line}
-            </Text>
-          ))}
-        </Box>
+        <Heading as='h1' size='xl'>
+          {media.title}
+        </Heading>
+        <HStack justifyContent='space-between' mt='1rem'>
+          <SubInfo title='Year' value={media.seasonYear} />
+          <SubInfo title='Episodes' value={media.episodes} />
+          <SubInfo title='Duration' value={media.duration} />
+        </HStack>
+        {media.description?.map((line, index) => (
+          <Text mt='4' fontSize='sm' key={index}>
+            {line}
+          </Text>
+        ))}
       </Container>
     </>
   )

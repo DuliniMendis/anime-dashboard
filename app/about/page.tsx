@@ -8,7 +8,6 @@ import {
   Code,
   Flex,
   Stack,
-  List,
 } from '@chakra-ui/react'
 
 export default function About() {
