@@ -1,7 +1,6 @@
 'use client'
 
 import { useSuspenseQuery } from '@apollo/client'
-import { SimpleGrid } from '@chakra-ui/react'
 import { getPage } from '../lib/graphql/pages'
 import Link from 'next/link'
 import { AnimeCard } from './Card'
@@ -9,6 +8,11 @@ import { GetPageQuery } from '../lib/graphql/pages.generated'
 import { useEffect } from 'react'
 import { mapPageDataToListView } from '../lib/dataMappers/listMapper'
 import { ITEMS_PER_PAGE } from '../lib/constants'
+import dynamic from 'next/dynamic'
+
+const SimpleGrid = dynamic(() =>
+  import('@chakra-ui/react').then((mod) => mod.SimpleGrid),
+)
 
 /**
  * The `List` component displays a paginated list of media items using a grid layout.

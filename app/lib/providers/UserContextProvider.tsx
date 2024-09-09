@@ -40,7 +40,7 @@ export const UserContextProvider = ({
     if (session?.user?.id) {
       fetchUser(session.user.id)
     }
-  }, [session?.user])
+  }, [session?.user?.id])
 
   return (
     <UserContext.Provider

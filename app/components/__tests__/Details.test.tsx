@@ -14,7 +14,7 @@ describe('Details Component', () => {
       result: {
         data: {
           Media: {
-            __typename: 'Media',
+            __typename: 'Media', // typenames are required since Fragments are used in the query
             id: '1',
             title: { english: 'Anime 1' },
             coverImage: {

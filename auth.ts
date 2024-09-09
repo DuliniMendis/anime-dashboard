@@ -13,13 +13,16 @@ export const getOrInsertUser = async (
     const users =
       await sql<UserDBRecord>`SELECT id FROM anime_users WHERE username=${username}`
 
-    if (!users.rows.length) {
+    if (users.rows[0]) {
+      id = users.rows[0].id
+    } else {
       await sql<User>`INSERT INTO anime_users (username, job_title) VALUES (${username}, ${jobTitle})`
       const createdUsers =
         await sql<UserDBRecord>`SELECT id FROM anime_users WHERE username=${username}`
+      if (!createdUsers.rows[0]) {
+        throw new Error('Failed to create user.')
+      }
       id = createdUsers.rows[0].id
-    } else {
-      id = users.rows[0].id
     }
     return {
       id,
